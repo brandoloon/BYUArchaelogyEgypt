@@ -1,6 +1,6 @@
 using System;
 
-namespace BYUArchaelogyEgypt.Models
+namespace BYUArchaeologyEgypt.Models
 {
     public class ErrorViewModel
     {
