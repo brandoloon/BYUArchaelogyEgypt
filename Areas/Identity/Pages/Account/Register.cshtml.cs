@@ -17,7 +17,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BYUArchaeologyEgypt.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<BYUArchaeologyEgyptUser> _signInManager;

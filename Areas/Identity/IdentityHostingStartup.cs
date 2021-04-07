@@ -21,6 +21,7 @@ namespace BYUArchaeologyEgypt.Areas.Identity
                         context.Configuration.GetConnectionString("BYUArchaeologyEgyptContextConnection")));
 
                 services.AddDefaultIdentity<BYUArchaeologyEgyptUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<BYUArchaeologyEgyptContext>();
             });
         }

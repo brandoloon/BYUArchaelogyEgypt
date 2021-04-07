@@ -15,7 +15,7 @@ namespace BYUArchaeologyEgypt
 {
     public class Program
     {
-        public async static Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
@@ -28,7 +28,7 @@ namespace BYUArchaeologyEgypt
                     var userManager = services.GetRequiredService<UserManager<BYUArchaeologyEgyptUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await ContextSeed.SeedRolesAsync(userManager, roleManager);
-                    await ContextSeed.SeedSuperAdminAsync(userManager, roleManager);
+                    await ContextSeed.SeedAdminAsync(userManager);
                 }
                 catch (Exception ex)
                 {

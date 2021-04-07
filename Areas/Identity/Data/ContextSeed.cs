@@ -16,7 +16,7 @@ namespace BYUArchaeologyEgypt.Areas.Identity.Data
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Basic.ToString()));
         }
 
-        public static async Task SeedSuperAdminAsync(UserManager<BYUArchaeologyEgyptUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAdminAsync(UserManager<BYUArchaeologyEgyptUser> userManager)
         {
             //Seed Default User
             var defaultUser = new BYUArchaeologyEgyptUser
