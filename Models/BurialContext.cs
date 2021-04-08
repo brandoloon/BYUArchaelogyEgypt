@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BYUArchaelogyEgypt.Models;
+using BYUArchaeologyEgypt.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BYUArchaelogyEgypt.Models
+namespace BYUArchaeologyEgypt.Models
 {
         public class BurialContext : DbContext
         {

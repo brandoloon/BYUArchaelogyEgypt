@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using BYUArchaelogyEgypt.Models;
+using BYUArchaeologyEgypt.Models;
 
-namespace BYUArchaelogyEgypt.Models
+namespace BYUArchaeologyEgypt.Models
 {
     public class BiologicalSample
     {

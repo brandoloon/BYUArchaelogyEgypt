@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BYUArchaelogyEgypt.Migrations
+namespace BYUArchaeologyEgypt.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -209,7 +209,7 @@ namespace BYUArchaelogyEgypt.Migrations
                 {
                     SampleId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BurialID = table.Column<int>(nullable: true),
+                    Burial = table.Column<int>(nullable: false),
                     RackNum = table.Column<int>(nullable: false),
                     BagNum = table.Column<int>(nullable: false),
                     ClusterNumber = table.Column<int>(nullable: false),
@@ -217,7 +217,8 @@ namespace BYUArchaelogyEgypt.Migrations
                     PreviouslySampled = table.Column<bool>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
                     Initials = table.Column<string>(nullable: true),
-                    Area = table.Column<string>(nullable: true)
+                    Area = table.Column<string>(nullable: true),
+                    BurialID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
