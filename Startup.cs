@@ -1,4 +1,5 @@
-using BYUArchaelogyEgypt.Data;
+using BYUArchaeologyEgypt.Areas.Identity.Data;
+using BYUArchaeologyEgypt.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BYUArchaelogyEgypt.Models;
 
-namespace BYUArchaelogyEgypt
+namespace BYUArchaeologyEgypt
 {
     public class Startup
     {
@@ -35,11 +36,7 @@ namespace BYUArchaelogyEgypt
             services.AddDbContext<BurialContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
-
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -63,6 +60,21 @@ namespace BYUArchaelogyEgypt
 
             app.UseRouting();
 
+            // XSS Protection
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Xss-Protection", "1");
+                await next();
+            });
+
+            // Content Security Policy
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.Headers.Add("Content-Security-Policy",
+                "default-src 'self'");
+                await next();
+            });
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -73,6 +85,7 @@ namespace BYUArchaelogyEgypt
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }

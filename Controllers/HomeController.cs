@@ -1,5 +1,5 @@
-﻿using BYUArchaelogyEgypt.Data;
-using BYUArchaelogyEgypt.Models;
+﻿using BYUArchaeologyEgypt.Models;
+using BYUArchaeologyEgypt.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BYUArchaelogyEgypt.Controllers
+namespace BYUArchaeologyEgypt.Controllers
 {
     public class HomeController : Controller
     {
