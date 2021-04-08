@@ -55,6 +55,21 @@ namespace BYUArchaeologyEgypt
 
             app.UseRouting();
 
+            // XSS Protection
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Xss-Protection", "1");
+                await next();
+            });
+
+            // Content Security Policy
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.Headers.Add("Content-Security-Policy",
+                "default-src 'self'");
+                await next();
+            });
+
             app.UseAuthentication();
             app.UseAuthorization();
 
