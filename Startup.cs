@@ -63,7 +63,7 @@ namespace BYUArchaeologyEgypt
                 await next();
             });
 
-            // Content Security Policy
+            //Content Security Policy
             app.Use(async (ctx, next) =>
             {
                 ctx.Response.Headers.Add("Content-Security-Policy",

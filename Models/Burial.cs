@@ -71,14 +71,14 @@ namespace BYUArchaeologyEgypt.Models
         public string Sex_Method { get; set; }
         [Required]
         [ForeignKey("HairColor")]
-        public string Hair_color { get; set; }
+        public int Hair_color { get; set; }
         [Required]
         [ForeignKey("BurialWrapping")]
-        public BurialWrapping Burial_wrapping { get; set; }
+        public int Burial_wrapping { get; set; }
         public string Preservation { get; set; }
         [Required]
         [ForeignKey("AgeAtDeath")]
-        public AgeAtDeath Age_bracket_at_death { get; set; }
+        public int Age_bracket_at_death { get; set; }
         public int Estimated_age_at_death { get; set; }
         public string Age_Method { get; set; }
         public int Estimate_living_stature { get; set; }
@@ -203,13 +203,13 @@ namespace BYUArchaeologyEgypt.Models
         [Required]
         public string Burial_Icon2 { get; set; }
         //This is for images of burials in general
-        public List<FileOnFileSystemModel> ImgOnSystem { get; set; }
-        public List<FileOnDatabaseModel> ImgOnDatabase { get; set; }
+        public List<FileOnFileSystemModel> ImgOnSystem { get; set; } = new List<FileOnFileSystemModel>();
+        public List<FileOnDatabaseModel> ImgOnDatabase { get; set; } = new List<FileOnDatabaseModel>();
         //This is for scans of the field notes
-        public List<FileOnFileSystemModel> NoteBookOnSystem { get; set; }
-        public List<FileOnDatabaseModel> NoteBookOnDatabase { get; set; }
+        public List<FileOnFileSystemModel> NoteBookOnSystem { get; set; } = new List<FileOnFileSystemModel>();
+        public List<FileOnDatabaseModel> NoteBookOnDatabase { get; set; } = new List<FileOnDatabaseModel>();
         //This is the scans of bone books
-        public List<FileOnFileSystemModel> BoneBookOnSystem { get; set; }
-        public List<FileOnDatabaseModel> BoneBookOnDatabase { get; set; }
+        public List<FileOnFileSystemModel> BoneBookOnSystem { get; set; } = new List<FileOnFileSystemModel>();
+        public List<FileOnDatabaseModel> BoneBookOnDatabase { get; set; } = new List<FileOnDatabaseModel>();
     }
 }

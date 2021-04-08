@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace BYUArchaeologyEgypt.Controllers
 {
@@ -43,7 +45,60 @@ namespace BYUArchaeologyEgypt.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(Burial burial, List<IFormFile> files, string description)
+        {
+
+            
+            foreach (var file in files)
+            {
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\Files\\");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var filePath = Path.Combine(basePath, file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    var fileModel = new FileOnFileSystemModel
+                    {
+                        CreatedOn = DateTime.UtcNow,
+                        FileType = file.ContentType,
+                        Extension = extension,
+                        Name = fileName,
+                        Description = description,
+                        FilePath = filePath
+                    };
+                    burial.ImgOnSystem.Add(fileModel);
+                }
+                else
+                {
+                    ViewBag.status = "Photo already esists with this name and file type";
+                    return View();
+                }
+            }
+            _BurialContext.Burials.Add(burial);
+            _BurialContext.SaveChanges();
+            return View("Details", burial);
+        }
+
+        [HttpGet]
+        public IActionResult Details(int bid)
+        {
+            var burial = _BurialContext.Burials.Where(l => l.BurialID == bid).FirstOrDefault();
+
+            return View(burial);
+        }
 
         public IActionResult Privacy()
         {

@@ -4,14 +4,16 @@ using BYUArchaeologyEgypt.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BYUArchaeologyEgypt.Migrations
 {
     [DbContext(typeof(BurialContext))]
-    partial class BurialContextModelSnapshot : ModelSnapshot
+    [Migration("20210408163232_third")]
+    partial class third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,6 +168,9 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<bool>("Bone_taken")
                         .HasColumnType("bit");
 
+                    b.Property<int>("BurialWrapping")
+                        .HasColumnType("int");
+
                     b.Property<string>("Burial_Icon2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -179,9 +184,6 @@ namespace BYUArchaeologyEgypt.Migrations
 
                     b.Property<string>("Burial_situation")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Burial_wrapping")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Button_osteoma")
                         .HasColumnType("bit");
@@ -243,8 +245,9 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<string>("Goods")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Hair_color")
-                        .HasColumnType("int");
+                    b.Property<string>("Hair_color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Hair_taken")
                         .HasColumnType("bit");
@@ -431,6 +434,8 @@ namespace BYUArchaeologyEgypt.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BurialID");
+
+                    b.HasIndex("BurialWrapping");
 
                     b.ToTable("Burials");
                 });
@@ -624,6 +629,15 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
                         .WithMany("BiologicalSamples")
                         .HasForeignKey("BurialID");
+                });
+
+            modelBuilder.Entity("BYUArchaeologyEgypt.Models.Burial", b =>
+                {
+                    b.HasOne("BYUArchaeologyEgypt.Models.BurialWrapping", "Burial_wrapping")
+                        .WithMany()
+                        .HasForeignKey("BurialWrapping")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BYUArchaeologyEgypt.Models.FileOnDatabaseModel", b =>
