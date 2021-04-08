@@ -160,6 +160,9 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<int>("Body_analysis")
                         .HasColumnType("int");
 
+                    b.Property<int?>("BoneBookOnSystem")
+                        .HasColumnType("int");
+
                     b.Property<int>("Bone_length")
                         .HasColumnType("int");
 
@@ -261,6 +264,9 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<float>("Iliac_crest")
                         .HasColumnType("real");
 
+                    b.Property<int?>("ImgOnSystem")
+                        .HasColumnType("int");
+
                     b.Property<string>("Initials_of_data_entry_checker")
                         .HasColumnType("nvarchar(max)");
 
@@ -302,6 +308,9 @@ namespace BYUArchaeologyEgypt.Migrations
 
                     b.Property<float>("Nasion_prosthion")
                         .HasColumnType("real");
+
+                    b.Property<int?>("NoteBookOnSystem")
+                        .HasColumnType("int");
 
                     b.Property<int>("Nuchal_crest")
                         .HasColumnType("int");
@@ -451,69 +460,12 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.ToTable("BurialWrappings");
                 });
 
-            modelBuilder.Entity("BYUArchaeologyEgypt.Models.FileOnDatabaseModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("BurialID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BurialID1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BurialID2")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Data")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Extension")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UploadedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BurialID");
-
-                    b.HasIndex("BurialID1");
-
-                    b.HasIndex("BurialID2");
-
-                    b.ToTable("FileOnDatabaseModel");
-                });
-
             modelBuilder.Entity("BYUArchaeologyEgypt.Models.FileOnFileSystemModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("BurialID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BurialID1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BurialID2")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -538,13 +490,7 @@ namespace BYUArchaeologyEgypt.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BurialID");
-
-                    b.HasIndex("BurialID1");
-
-                    b.HasIndex("BurialID2");
-
-                    b.ToTable("FileOnFileSystemModel");
+                    b.ToTable("FileOnFileSystemModels");
                 });
 
             modelBuilder.Entity("BYUArchaeologyEgypt.Models.HairColor", b =>
@@ -624,36 +570,6 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
                         .WithMany("BiologicalSamples")
                         .HasForeignKey("BurialID");
-                });
-
-            modelBuilder.Entity("BYUArchaeologyEgypt.Models.FileOnDatabaseModel", b =>
-                {
-                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
-                        .WithMany("BoneBookOnDatabase")
-                        .HasForeignKey("BurialID");
-
-                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
-                        .WithMany("ImgOnDatabase")
-                        .HasForeignKey("BurialID1");
-
-                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
-                        .WithMany("NoteBookOnDatabase")
-                        .HasForeignKey("BurialID2");
-                });
-
-            modelBuilder.Entity("BYUArchaeologyEgypt.Models.FileOnFileSystemModel", b =>
-                {
-                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
-                        .WithMany("BoneBookOnSystem")
-                        .HasForeignKey("BurialID");
-
-                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
-                        .WithMany("ImgOnSystem")
-                        .HasForeignKey("BurialID1");
-
-                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
-                        .WithMany("NoteBookOnSystem")
-                        .HasForeignKey("BurialID2");
                 });
 #pragma warning restore 612, 618
         }

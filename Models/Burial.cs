@@ -202,14 +202,15 @@ namespace BYUArchaeologyEgypt.Models
         public string Burial_icon1 { get; set; }
         [Required]
         public string Burial_Icon2 { get; set; }
+
         //This is for images of burials in general
-        public List<FileOnFileSystemModel> ImgOnSystem { get; set; } = new List<FileOnFileSystemModel>();
-        public List<FileOnDatabaseModel> ImgOnDatabase { get; set; } = new List<FileOnDatabaseModel>();
+        [ForeignKey("FileOnFileSystemModel")]
+        public int? ImgOnSystem { get; set; }
         //This is for scans of the field notes
-        public List<FileOnFileSystemModel> NoteBookOnSystem { get; set; } = new List<FileOnFileSystemModel>();
-        public List<FileOnDatabaseModel> NoteBookOnDatabase { get; set; } = new List<FileOnDatabaseModel>();
+        [ForeignKey("FileOnFileSystemModel")]
+        public int? NoteBookOnSystem { get; set; }
         //This is the scans of bone books
-        public List<FileOnFileSystemModel> BoneBookOnSystem { get; set; } = new List<FileOnFileSystemModel>();
-        public List<FileOnDatabaseModel> BoneBookOnDatabase { get; set; } = new List<FileOnDatabaseModel>();
+        [ForeignKey("FileOnFileSystemModel")]
+        public int? BoneBookOnSystem { get; set; }
     }
 }

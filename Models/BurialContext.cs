@@ -20,5 +20,6 @@ namespace BYUArchaeologyEgypt.Models
             public DbSet<BurialWrapping> BurialWrappings { get; set; }
             public DbSet<HairColor> HairColors { get; set; }
             public DbSet<Sex> Sexes { get; set; }
+            public DbSet<FileOnFileSystemModel> FileOnFileSystemModels { get; set; }
         }
 }

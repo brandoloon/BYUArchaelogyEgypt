@@ -28,7 +28,7 @@ namespace BYUArchaeologyEgypt.Controllers
             return View();
         }
 
-        public IActionResult List() 
+        public IActionResult BurialList() 
         {
             return View(_BurialContext.Burials);
         }
@@ -58,7 +58,7 @@ namespace BYUArchaeologyEgypt.Controllers
             
             foreach (var file in files)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\Files\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\img\\Files\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(file.FileName);
@@ -79,7 +79,9 @@ namespace BYUArchaeologyEgypt.Controllers
                         Description = description,
                         FilePath = filePath
                     };
-                    burial.ImgOnSystem.Add(fileModel);
+                    _BurialContext.FileOnFileSystemModels.Add(fileModel);
+                    _BurialContext.SaveChanges();
+                    burial.ImgOnSystem = _BurialContext.FileOnFileSystemModels.Where(f => f.FilePath == fileModel.FilePath).FirstOrDefault().Id;
                 }
                 else
                 {
@@ -89,14 +91,17 @@ namespace BYUArchaeologyEgypt.Controllers
             }
             _BurialContext.Burials.Add(burial);
             _BurialContext.SaveChanges();
-            return View("Details", burial);
+            return View("Success", burial);
         }
-
+        public IActionResult Success(Burial burial)
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult Details(int bid)
         {
             var burial = _BurialContext.Burials.Where(l => l.BurialID == bid).FirstOrDefault();
-
+            ViewData["img"] = _BurialContext.FileOnFileSystemModels.Where(i => i.Id == burial.ImgOnSystem).FirstOrDefault();
             return View(burial);
         }
 

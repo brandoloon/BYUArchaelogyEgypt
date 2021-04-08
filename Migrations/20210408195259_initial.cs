@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BYUArchaeologyEgypt.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,64 +18,6 @@ namespace BYUArchaeologyEgypt.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AgesAtDeath", x => x.AgeCode);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BurialWrappings",
-                columns: table => new
-                {
-                    BurialWrappingCode = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BurialWrappingDescription = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BurialWrappings", x => x.BurialWrappingCode);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HairColors",
-                columns: table => new
-                {
-                    HairColorCode = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    HairColorDescription = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HairColors", x => x.HairColorCode);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Locations",
-                columns: table => new
-                {
-                    LocationId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BurialLocationNS = table.Column<string>(nullable: false),
-                    BurialLocationEW = table.Column<string>(nullable: false),
-                    LowPairNS = table.Column<string>(nullable: false),
-                    HighPairNS = table.Column<string>(nullable: false),
-                    LowPairEW = table.Column<string>(nullable: false),
-                    HighPairEW = table.Column<string>(nullable: false),
-                    Subplot = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Locations", x => x.LocationId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sexes",
-                columns: table => new
-                {
-                    SexCode = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SexDescription = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sexes", x => x.SexCode);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,10 +49,10 @@ namespace BYUArchaeologyEgypt.Migrations
                     Sex = table.Column<int>(nullable: false),
                     Gender_GE = table.Column<int>(nullable: false),
                     Sex_Method = table.Column<string>(nullable: true),
-                    Hair_color = table.Column<string>(nullable: false),
-                    BurialWrapping = table.Column<int>(nullable: false),
+                    Hair_color = table.Column<int>(nullable: false),
+                    Burial_wrapping = table.Column<int>(nullable: false),
                     Preservation = table.Column<string>(nullable: true),
-                    AgeAtDeath = table.Column<int>(nullable: false),
+                    Age_bracket_at_death = table.Column<int>(nullable: false),
                     Estimated_age_at_death = table.Column<int>(nullable: false),
                     Age_Method = table.Column<string>(nullable: true),
                     Estimate_living_stature = table.Column<int>(nullable: false),
@@ -184,23 +126,91 @@ namespace BYUArchaeologyEgypt.Migrations
                     Face_Bundle = table.Column<string>(nullable: true),
                     Osteology_Notes = table.Column<string>(nullable: true),
                     Burial_icon1 = table.Column<string>(nullable: false),
-                    Burial_Icon2 = table.Column<string>(nullable: false)
+                    Burial_Icon2 = table.Column<string>(nullable: false),
+                    ImgOnSystem = table.Column<int>(nullable: true),
+                    NoteBookOnSystem = table.Column<int>(nullable: true),
+                    BoneBookOnSystem = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Burials", x => x.BurialID);
-                    table.ForeignKey(
-                        name: "FK_Burials_AgesAtDeath_AgeAtDeath",
-                        column: x => x.AgeAtDeath,
-                        principalTable: "AgesAtDeath",
-                        principalColumn: "AgeCode",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Burials_BurialWrappings_BurialWrapping",
-                        column: x => x.BurialWrapping,
-                        principalTable: "BurialWrappings",
-                        principalColumn: "BurialWrappingCode",
-                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BurialWrappings",
+                columns: table => new
+                {
+                    BurialWrappingCode = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BurialWrappingDescription = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BurialWrappings", x => x.BurialWrappingCode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FileOnFileSystemModels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    FileType = table.Column<string>(nullable: true),
+                    Extension = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    UploadedBy = table.Column<string>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: true),
+                    FilePath = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileOnFileSystemModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HairColors",
+                columns: table => new
+                {
+                    HairColorCode = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HairColorDescription = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HairColors", x => x.HairColorCode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    LocationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BurialLocationNS = table.Column<string>(nullable: false),
+                    BurialLocationEW = table.Column<string>(nullable: false),
+                    LowPairNS = table.Column<string>(nullable: false),
+                    HighPairNS = table.Column<string>(nullable: false),
+                    LowPairEW = table.Column<string>(nullable: false),
+                    HighPairEW = table.Column<string>(nullable: false),
+                    Subplot = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Locations", x => x.LocationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sexes",
+                columns: table => new
+                {
+                    SexCode = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SexDescription = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sexes", x => x.SexCode);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,6 +228,18 @@ namespace BYUArchaeologyEgypt.Migrations
                     Notes = table.Column<string>(nullable: true),
                     Initials = table.Column<string>(nullable: true),
                     Area = table.Column<string>(nullable: true),
+                    Size = table.Column<float>(nullable: false),
+                    Foci = table.Column<int>(nullable: false),
+                    C14_2017 = table.Column<int>(nullable: false),
+                    Location = table.Column<string>(nullable: true),
+                    Questions = table.Column<string>(nullable: true),
+                    ConventionalC14Age = table.Column<int>(nullable: false),
+                    C14CalendarDate = table.Column<int>(nullable: false),
+                    CalendarDateMAX = table.Column<int>(nullable: false),
+                    CalendarDateMIN = table.Column<int>(nullable: false),
+                    CalendarDateSPAN = table.Column<int>(nullable: false),
+                    CalendarDateAVG = table.Column<int>(nullable: false),
+                    Category = table.Column<string>(nullable: true),
                     BurialID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -231,142 +253,25 @@ namespace BYUArchaeologyEgypt.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "FileOnDatabaseModel",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    FileType = table.Column<string>(nullable: true),
-                    Extension = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    UploadedBy = table.Column<string>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: true),
-                    Data = table.Column<byte[]>(nullable: true),
-                    BurialID = table.Column<int>(nullable: true),
-                    BurialID1 = table.Column<int>(nullable: true),
-                    BurialID2 = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileOnDatabaseModel", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FileOnDatabaseModel_Burials_BurialID",
-                        column: x => x.BurialID,
-                        principalTable: "Burials",
-                        principalColumn: "BurialID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_FileOnDatabaseModel_Burials_BurialID1",
-                        column: x => x.BurialID1,
-                        principalTable: "Burials",
-                        principalColumn: "BurialID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_FileOnDatabaseModel_Burials_BurialID2",
-                        column: x => x.BurialID2,
-                        principalTable: "Burials",
-                        principalColumn: "BurialID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FileOnFileSystemModel",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    FileType = table.Column<string>(nullable: true),
-                    Extension = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    UploadedBy = table.Column<string>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: true),
-                    FilePath = table.Column<string>(nullable: true),
-                    BurialID = table.Column<int>(nullable: true),
-                    BurialID1 = table.Column<int>(nullable: true),
-                    BurialID2 = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileOnFileSystemModel", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FileOnFileSystemModel_Burials_BurialID",
-                        column: x => x.BurialID,
-                        principalTable: "Burials",
-                        principalColumn: "BurialID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_FileOnFileSystemModel_Burials_BurialID1",
-                        column: x => x.BurialID1,
-                        principalTable: "Burials",
-                        principalColumn: "BurialID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_FileOnFileSystemModel_Burials_BurialID2",
-                        column: x => x.BurialID2,
-                        principalTable: "Burials",
-                        principalColumn: "BurialID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_BiologicalSample_BurialID",
                 table: "BiologicalSample",
                 column: "BurialID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Burials_AgeAtDeath",
-                table: "Burials",
-                column: "AgeAtDeath");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Burials_BurialWrapping",
-                table: "Burials",
-                column: "BurialWrapping");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileOnDatabaseModel_BurialID",
-                table: "FileOnDatabaseModel",
-                column: "BurialID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileOnDatabaseModel_BurialID1",
-                table: "FileOnDatabaseModel",
-                column: "BurialID1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileOnDatabaseModel_BurialID2",
-                table: "FileOnDatabaseModel",
-                column: "BurialID2");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileOnFileSystemModel_BurialID",
-                table: "FileOnFileSystemModel",
-                column: "BurialID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileOnFileSystemModel_BurialID1",
-                table: "FileOnFileSystemModel",
-                column: "BurialID1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileOnFileSystemModel_BurialID2",
-                table: "FileOnFileSystemModel",
-                column: "BurialID2");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AgesAtDeath");
+
+            migrationBuilder.DropTable(
                 name: "BiologicalSample");
 
             migrationBuilder.DropTable(
-                name: "FileOnDatabaseModel");
+                name: "BurialWrappings");
 
             migrationBuilder.DropTable(
-                name: "FileOnFileSystemModel");
+                name: "FileOnFileSystemModels");
 
             migrationBuilder.DropTable(
                 name: "HairColors");
@@ -379,12 +284,6 @@ namespace BYUArchaeologyEgypt.Migrations
 
             migrationBuilder.DropTable(
                 name: "Burials");
-
-            migrationBuilder.DropTable(
-                name: "AgesAtDeath");
-
-            migrationBuilder.DropTable(
-                name: "BurialWrappings");
         }
     }
 }

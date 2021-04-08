@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var img = (FileOnFileSystemModel)ViewData["img"];
 }
 
 <h1>Details</h1>
@@ -614,13 +615,10 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ImgOnSystem)
         </dt>
-        @foreach (var i in Model.ImgOnSystem)
-        { 
-            <dd class="col-sm-10">
-                @i.Description
-                <img src="~@i.FilePath" />
-            </dd>
-         }
+        <dd class="col-sm-10">
+            @img.Description
+            <img src="~/img/Files/@img.Name@img.Extension">
+        </dd>
             
     </dl>
 </div>
