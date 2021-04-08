@@ -1,4 +1,5 @@
 ﻿using BYUArchaeologyEgypt.Models;
+using BYUArchaeologyEgypt.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,29 @@ namespace BYUArchaeologyEgypt.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private ApplicationDbContext _context;
+        private BurialContext _BurialContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, BurialContext burialContext)
         {
             _logger = logger;
+            _context = context;
+            _BurialContext = burialContext;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult BurialList()
+        {
+            return View(_context);
+        }
+
+        public IActionResult List() 
+        {
+            return View(_BurialContext.Burials);
         }
 
         public IActionResult Privacy()
