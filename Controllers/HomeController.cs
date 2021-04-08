@@ -52,36 +52,107 @@ namespace BYUArchaeologyEgypt.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(Burial burial, List<IFormFile> files, string description)
+        public async Task<IActionResult> CreateAsync(Burial burial, 
+            IFormFile img_file, string img_description,
+            IFormFile notes_file, string notes_description,
+            IFormFile bone_file, string bone_description)
         {
 
-            
-            foreach (var file in files)
+            // Image Upload
+            if (img_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\img\\Files\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\img\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
-                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                var filePath = Path.Combine(basePath, file.FileName);
-                var extension = Path.GetExtension(file.FileName);
+                var fileName = Path.GetFileNameWithoutExtension(img_file.FileName);
+                var filePath = Path.Combine(basePath, img_file.FileName);
+                var extension = Path.GetExtension(img_file.FileName);
                 if (!System.IO.File.Exists(filePath))
                 {
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await file.CopyToAsync(stream);
+                        await img_file.CopyToAsync(stream);
                     }
                     var fileModel = new FileOnFileSystemModel
                     {
                         CreatedOn = DateTime.UtcNow,
-                        FileType = file.ContentType,
+                        FileType = img_file.ContentType,
                         Extension = extension,
                         Name = fileName,
-                        Description = description,
+                        Description = img_description,
                         FilePath = filePath
                     };
                     _BurialContext.FileOnFileSystemModels.Add(fileModel);
                     _BurialContext.SaveChanges();
                     burial.ImgOnSystem = _BurialContext.FileOnFileSystemModels.Where(f => f.FilePath == fileModel.FilePath).FirstOrDefault().Id;
+                }
+                else
+                {
+                    ViewBag.status = "Photo already esists with this name and file type";
+                    return View();
+                }
+            }
+            // Field Notes Upload
+            if (notes_file != null)
+            {
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\notes\\");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var fileName = Path.GetFileNameWithoutExtension(notes_file.FileName);
+                var filePath = Path.Combine(basePath, notes_file.FileName);
+                var extension = Path.GetExtension(notes_file.FileName);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await notes_file.CopyToAsync(stream);
+                    }
+                    var fileModel = new FileOnFileSystemModel
+                    {
+                        CreatedOn = DateTime.UtcNow,
+                        FileType = notes_file.ContentType,
+                        Extension = extension,
+                        Name = fileName,
+                        Description = notes_description,
+                        FilePath = filePath
+                    };
+                    _BurialContext.FileOnFileSystemModels.Add(fileModel);
+                    _BurialContext.SaveChanges();
+                    burial.NoteBookOnSystem = _BurialContext.FileOnFileSystemModels.Where(f => f.FilePath == fileModel.FilePath).FirstOrDefault().Id;
+                }
+                else
+                {
+                    ViewBag.status = "Photo already esists with this name and file type";
+                    return View();
+                }
+            }
+            // Bone Book Upload
+            if (img_file != null)
+            {
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\bonebooks\\");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var fileName = Path.GetFileNameWithoutExtension(bone_file.FileName);
+                var filePath = Path.Combine(basePath, bone_file.FileName);
+                var extension = Path.GetExtension(bone_file.FileName);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await bone_file.CopyToAsync(stream);
+                    }
+                    var fileModel = new FileOnFileSystemModel
+                    {
+                        CreatedOn = DateTime.UtcNow,
+                        FileType = bone_file.ContentType,
+                        Extension = extension,
+                        Name = fileName,
+                        Description = bone_description,
+                        FilePath = filePath
+                    };
+                    _BurialContext.FileOnFileSystemModels.Add(fileModel);
+                    _BurialContext.SaveChanges();
+                    burial.BoneBookOnSystem = _BurialContext.FileOnFileSystemModels.Where(f => f.FilePath == fileModel.FilePath).FirstOrDefault().Id;
                 }
                 else
                 {
@@ -102,6 +173,8 @@ namespace BYUArchaeologyEgypt.Controllers
         {
             var burial = _BurialContext.Burials.Where(l => l.BurialID == bid).FirstOrDefault();
             ViewData["img"] = _BurialContext.FileOnFileSystemModels.Where(i => i.Id == burial.ImgOnSystem).FirstOrDefault();
+            ViewData["notes"] = _BurialContext.FileOnFileSystemModels.Where(i => i.Id == burial.NoteBookOnSystem).FirstOrDefault();
+            ViewData["bone"] = _BurialContext.FileOnFileSystemModels.Where(i => i.Id == burial.BoneBookOnSystem).FirstOrDefault();
             return View(burial);
         }
 

@@ -4,6 +4,8 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var img = (FileOnFileSystemModel)ViewData["img"];
+    var notes = (FileOnFileSystemModel)ViewData["notes"];
+    var bone = (FileOnFileSystemModel)ViewData["bone"];
 }
 
 <h1>Details</h1>
@@ -617,9 +619,23 @@
         </dt>
         <dd class="col-sm-10">
             @img.Description
-            <img src="~/img/Files/@img.Name@img.Extension">
+            <img src="~/Files/img/@img.Name@img.Extension">
         </dd>
-            
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NoteBookOnSystem)
+        </dt>
+        <dd class="col-sm-10">
+            @notes.Description
+            <img src="~/Files/img/@notes.Name@notes.Extension">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BoneBookOnSystem)
+        </dt>
+        <dd class="col-sm-10">
+            @bone.Description
+            <img src="~/Files/img/@bone.Name@bone.Extension">
+        </dd>
+
     </dl>
 </div>
 <div>

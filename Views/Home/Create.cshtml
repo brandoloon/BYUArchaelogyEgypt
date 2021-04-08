@@ -509,8 +509,21 @@
                 <span asp-validation-for="Burial_Icon2" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="file" name="files" multiple required />
-                <input type="text" autocomplete="off" placeholder="Enter File Description" name="description" required />
+                <label>Upload Image:</label>
+                <input type="file" name="img_file" />
+                <input type="text" autocomplete="off" placeholder="Enter File Description" name="img_description" />
+                <p>@ViewBag.status</p>
+            </div>
+            <div class="form-group">
+                <label>Upload Field Notes:</label>
+                <input type="file" name="notes_file" />
+                <input type="text" autocomplete="off" placeholder="Enter File Description" name="notes_description" />
+                <p>@ViewBag.status</p>
+            </div>
+            <div class="form-group">
+                <label>Upload a Bone Book:</label>
+                <input type="file" name="bone_file" />
+                <input type="text" autocomplete="off" placeholder="Enter File Description" name="bone_description" />
                 <p>@ViewBag.status</p>
             </div>
             <div class="form-group">
