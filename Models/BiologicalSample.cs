@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using BYUArchaelogyEgypt.Models;
 
 namespace BYUArchaelogyEgypt.Models
 {
@@ -13,7 +14,7 @@ namespace BYUArchaelogyEgypt.Models
         public int SampleId { get; set; }
 
         [ForeignKey("Burial")]
-        public virtual Burial Burial { get; set; }
+        public int Burial { get; set; }
 
         public int RackNum { get; set; }
 

@@ -14,11 +14,13 @@ namespace BYUArchaelogyEgypt.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ApplicationDbContext _context;
+        private BurialContext _BurialContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, BurialContext burialContext)
         {
             _logger = logger;
             _context = context;
+            _BurialContext = burialContext;
         }
 
         public IActionResult Index()
@@ -29,6 +31,11 @@ namespace BYUArchaelogyEgypt.Controllers
         public IActionResult BurialList()
         {
             return View(_context);
+        }
+
+        public IActionResult List() 
+        {
+            return View(_BurialContext.Burials);
         }
 
         public IActionResult Privacy()
