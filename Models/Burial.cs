@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -201,6 +202,14 @@ namespace BYUArchaeologyEgypt.Models
         public string Burial_icon1 { get; set; }
         [Required]
         public string Burial_Icon2 { get; set; }
-
+        //This is for images of burials in general
+        public List<FileOnFileSystemModel> ImgOnSystem { get; set; }
+        public List<FileOnDatabaseModel> ImgOnDatabase { get; set; }
+        //This is for scans of the field notes
+        public List<FileOnFileSystemModel> NoteBookOnSystem { get; set; }
+        public List<FileOnDatabaseModel> NoteBookOnDatabase { get; set; }
+        //This is the scans of bone books
+        public List<FileOnFileSystemModel> BoneBookOnSystem { get; set; }
+        public List<FileOnDatabaseModel> BoneBookOnDatabase { get; set; }
     }
 }

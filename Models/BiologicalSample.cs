@@ -31,7 +31,5 @@ namespace BYUArchaeologyEgypt.Models
         public string Initials { get; set; }
 
         public string Area { get; set; }
-
-
     }
 }

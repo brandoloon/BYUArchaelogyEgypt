@@ -31,6 +31,20 @@ namespace BYUArchaeologyEgypt.Controllers
             return View(_BurialContext.Burials);
         }
 
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Burial burial)
+        {
+            return View();
+        }
+
+
+
         public IActionResult Privacy()
         {
             return View();

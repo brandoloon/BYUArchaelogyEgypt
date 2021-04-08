@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BYUArchaeologyEgypt.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -231,6 +231,86 @@ namespace BYUArchaeologyEgypt.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "FileOnDatabaseModel",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    FileType = table.Column<string>(nullable: true),
+                    Extension = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    UploadedBy = table.Column<string>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: true),
+                    Data = table.Column<byte[]>(nullable: true),
+                    BurialID = table.Column<int>(nullable: true),
+                    BurialID1 = table.Column<int>(nullable: true),
+                    BurialID2 = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileOnDatabaseModel", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FileOnDatabaseModel_Burials_BurialID",
+                        column: x => x.BurialID,
+                        principalTable: "Burials",
+                        principalColumn: "BurialID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FileOnDatabaseModel_Burials_BurialID1",
+                        column: x => x.BurialID1,
+                        principalTable: "Burials",
+                        principalColumn: "BurialID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FileOnDatabaseModel_Burials_BurialID2",
+                        column: x => x.BurialID2,
+                        principalTable: "Burials",
+                        principalColumn: "BurialID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FileOnFileSystemModel",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    FileType = table.Column<string>(nullable: true),
+                    Extension = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    UploadedBy = table.Column<string>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: true),
+                    FilePath = table.Column<string>(nullable: true),
+                    BurialID = table.Column<int>(nullable: true),
+                    BurialID1 = table.Column<int>(nullable: true),
+                    BurialID2 = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileOnFileSystemModel", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FileOnFileSystemModel_Burials_BurialID",
+                        column: x => x.BurialID,
+                        principalTable: "Burials",
+                        principalColumn: "BurialID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FileOnFileSystemModel_Burials_BurialID1",
+                        column: x => x.BurialID1,
+                        principalTable: "Burials",
+                        principalColumn: "BurialID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FileOnFileSystemModel_Burials_BurialID2",
+                        column: x => x.BurialID2,
+                        principalTable: "Burials",
+                        principalColumn: "BurialID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_BiologicalSample_BurialID",
                 table: "BiologicalSample",
@@ -245,12 +325,48 @@ namespace BYUArchaeologyEgypt.Migrations
                 name: "IX_Burials_BurialWrapping",
                 table: "Burials",
                 column: "BurialWrapping");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileOnDatabaseModel_BurialID",
+                table: "FileOnDatabaseModel",
+                column: "BurialID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileOnDatabaseModel_BurialID1",
+                table: "FileOnDatabaseModel",
+                column: "BurialID1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileOnDatabaseModel_BurialID2",
+                table: "FileOnDatabaseModel",
+                column: "BurialID2");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileOnFileSystemModel_BurialID",
+                table: "FileOnFileSystemModel",
+                column: "BurialID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileOnFileSystemModel_BurialID1",
+                table: "FileOnFileSystemModel",
+                column: "BurialID1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileOnFileSystemModel_BurialID2",
+                table: "FileOnFileSystemModel",
+                column: "BurialID2");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "BiologicalSample");
+
+            migrationBuilder.DropTable(
+                name: "FileOnDatabaseModel");
+
+            migrationBuilder.DropTable(
+                name: "FileOnFileSystemModel");
 
             migrationBuilder.DropTable(
                 name: "HairColors");
