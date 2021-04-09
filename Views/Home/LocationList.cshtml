@@ -59,6 +59,7 @@
             </td>
             <td>
                 <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a>
+                <a asp-action="BurialList">View Burials</a> | 
                 @if (User.IsInRole("Admin"))
                 {<text> | </text><a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
             </td>
