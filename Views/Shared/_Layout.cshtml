@@ -31,12 +31,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="List">Biological Samples List</a>
                         </li>
                         <!--Add Burial Just for Authenticated User-->
-                        @*@if (User.IsInRole("Researcher"))
-                        {*@
+                        @if (User.IsInRole("Researcher"))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationCreate">Add Burial Information</a>
                             </li>
-                        @*}*@
+                        }
                         </ul>
                 </div>
             </div>

@@ -5,10 +5,12 @@
 }
 
 <h1>BurialList</h1>
-
+@if (User.IsInRole("Researcher"))
+{
 <p>
-    <a asp-action="LocationCreate">Create New</a>
+    <a asp-action="LocationCreate">Add New</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -619,10 +621,12 @@
                 @Html.DisplayFor(modelItem => item.Burial_Icon2)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.BurialID">Edit</a> |
+                @if (User.IsInRole("Researcher"))
+                {<a asp-action="Edit" asp-route-id="@item.BurialID">Edit</a><text> |</text>}
                 <a asp-action="Details" asp-route-bid="@item.BurialID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BurialID">Delete</a>
-            </td>
+                @if (User.IsInRole("Admin"))
+                {<a asp-action="Delete" asp-route-id="@item.BurialID">Delete</a>}
+                </td>
         </tr>
 }
     </tbody>

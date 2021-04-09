@@ -5,10 +5,12 @@
 }
 
 <h1>BiologicalSampleList</h1>
-
+@if (User.IsInRole("Researcher"))
+{
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add New</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -145,9 +147,11 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SampleId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SampleId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SampleId">Delete</a>
+                @if (User.IsInRole("Researcher"))
+                {<a asp-action="BiologicalSampleEdit" asp-route-id="@item.SampleId">Edit</a><text> |</text>}
+                <a asp-action="BiologicalSampleDetails" asp-route-id="@item.SampleId">Details</a> |
+                @if (User.IsInRole("Admin"))
+                {<a asp-action="BiologicalSampleDelete" asp-route-id="@item.SampleId">Delete</a>}
             </td>
         </tr>
 }
