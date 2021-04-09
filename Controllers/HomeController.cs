@@ -193,6 +193,11 @@ namespace BYUArchaeologyEgypt.Controllers
 
         // LOCATION VIEWS
         [HttpGet]
+        public IActionResult LocationList()
+        {
+            return View(_BurialContext.Locations);
+        }
+        [HttpGet]
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate()
         {
@@ -230,6 +235,11 @@ namespace BYUArchaeologyEgypt.Controllers
             return View(_BurialContext.BiologicalSamples.Where(bs => bs.Burial == bid));
         }
 
+        public IActionResult BiologicalSampleDetails(int bsid)
+        {
+            return View(_BurialContext.BiologicalSamples.Where(bs => bs.SampleId == bsid).FirstOrDefault());
+        }
+
         [HttpGet]
         [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleCreate(int bid)
@@ -250,8 +260,7 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleEdit(int bsid)
         {
-            ViewData["burial"] = _BurialContext.BiologicalSamples.Where(b => b.SampleId == bsid).FirstOrDefault();
-            return View();
+            return View(_BurialContext.BiologicalSamples.Where(b => b.SampleId == bsid).FirstOrDefault());
         }
         [HttpPost]
         [Authorize(Roles = "Researcher")]

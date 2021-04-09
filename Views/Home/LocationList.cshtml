@@ -6,9 +6,6 @@
 
 <h1>LocationList</h1>
 
-<p>
-    <a asp-action="LocationCreate">Add New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -61,11 +58,9 @@
                 @Html.DisplayFor(modelItem => item.Subplot)
             </td>
             <td>
-                @if (User.IsInRole("Researcher"))
-                {<a asp-action="LocationEdit" asp-route-lid="@item.LocationId">Edit</a><text> |</text>}
-                <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a> |
+                <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a>
                 @if (User.IsInRole("Admin"))
-                {<a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
+                {<text> | </text><a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
             </td>
         </tr>
 }

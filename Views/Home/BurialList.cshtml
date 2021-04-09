@@ -623,10 +623,10 @@
             <td>
                 @if (User.IsInRole("Researcher"))
                 {<a asp-action="Edit" asp-route-id="@item.BurialID">Edit</a><text> |</text>}
-                <a asp-action="Details" asp-route-bid="@item.BurialID">Details</a> |
+                <a asp-action="Details" asp-route-bid="@item.BurialID">Details</a>
                 @if (User.IsInRole("Admin"))
-                {<a asp-action="Delete" asp-route-id="@item.BurialID">Delete</a>}
-                </td>
+                {<text> |</text> <a asp-action="Delete" asp-route-id="@item.BurialID">Delete</a>}
+            </td>
         </tr>
 }
     </tbody>

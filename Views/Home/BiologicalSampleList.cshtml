@@ -143,9 +143,9 @@
             <td>
                 @if (User.IsInRole("Researcher"))
                 {<a asp-action="BiologicalSampleEdit" asp-route-bsid="@item.SampleId">Edit</a><text> |</text>}
-                <a asp-action="BiologicalSampleDetails" asp-route-bsid="@item.SampleId">Details</a> |
+                <a asp-action="BiologicalSampleDetails" asp-route-bsid="@item.SampleId">Details</a>
                 @if (User.IsInRole("Admin"))
-                {<a asp-action="BiologicalSampleDelete" asp-route-bsid="@item.SampleId">Delete</a>}
+                {<text> |</text> <a asp-action="BiologicalSampleDelete" asp-route-bsid="@item.SampleId">Delete</a>}
             </td>
         </tr>
 }
