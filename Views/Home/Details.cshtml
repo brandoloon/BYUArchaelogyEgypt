@@ -640,5 +640,7 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="BiologicalSampleList" asp-controller="Home" asp-route-bid="@Model.BurialID">View Samples for this Burial</a> |
+    <a asp-action="BiologicalSampleCreate" asp-controller="Home" asp-route-bid="@Model.BurialID">Add a Biological Sample</a> |
     <a asp-action="Index">Back to List</a>
 </div>

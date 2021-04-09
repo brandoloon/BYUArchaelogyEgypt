@@ -44,7 +44,6 @@ namespace BYUArchaeologyEgypt.Models
         public float West_to_feet { get; set; }
         public int Length_of_remains { get; set; }
         public int Sample_number { get; set; }
-        public List<BiologicalSample> BiologicalSamples { get; set; }
         [Required]
         public bool Artifact_found { get; set; }
         public string Artifacts_description { get; set; }
@@ -63,22 +62,17 @@ namespace BYUArchaeologyEgypt.Models
         public float GE_function { get; set; }
         public string Burial_situation { get; set; }
         [Required]
-        [ForeignKey("Sex")]
-        public int Sex { get; set; }
+        public string Sex { get; set; }
         [Required]
-        [ForeignKey("Sex")]
-        public int Gender_GE { get; set; }
+        public string Gender_GE { get; set; }
         public string Sex_Method { get; set; }
         [Required]
-        [ForeignKey("HairColor")]
-        public int Hair_color { get; set; }
+        public string Hair_color { get; set; }
         [Required]
-        [ForeignKey("BurialWrapping")]
-        public int Burial_wrapping { get; set; }
+        public string Burial_wrapping { get; set; }
         public string Preservation { get; set; }
         [Required]
-        [ForeignKey("AgeAtDeath")]
-        public int Age_bracket_at_death { get; set; }
+        public string Age_bracket_at_death { get; set; }
         public int Estimated_age_at_death { get; set; }
         public string Age_Method { get; set; }
         public int Estimate_living_stature { get; set; }

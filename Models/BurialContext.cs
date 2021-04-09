@@ -16,10 +16,7 @@ namespace BYUArchaeologyEgypt.Models
 
             public DbSet<Burial> Burials { get; set; }
             public DbSet<Location> Locations { get; set; }
-            public DbSet<AgeAtDeath> AgesAtDeath { get; set; }
-            public DbSet<BurialWrapping> BurialWrappings { get; set; }
-            public DbSet<HairColor> HairColors { get; set; }
-            public DbSet<Sex> Sexes { get; set; }
             public DbSet<FileOnFileSystemModel> FileOnFileSystemModels { get; set; }
+            public DbSet<BiologicalSample> BiologicalSamples { get; set; }
         }
 }
