@@ -522,7 +522,7 @@ document.getElementById("defaultOpen").click();
                     <div class="form-group">
                         <label asp-for="Burial_wrapping" class="control-label">Burial Wrapping</label>
                         <select asp-for="Burial_wrapping" class="form-control">
-                            <option selected></option>
+                            <option selected>@Model.Burial_wrapping</option>
                             <option>Full or nearly full wrapping remains</option>
                             <option>Partial wrapping remain</option>
                             <option>Bones and/or only partial remnants of wrapping remains</option>
@@ -533,7 +533,7 @@ document.getElementById("defaultOpen").click();
                     <div class="form-group">
                         <label asp-for="Age_bracket_at_death" class="control-label">Age Bracket at Death</label>
                         <select asp-for="Age_bracket_at_death" class="form-control">
-                            <option selected></option>
+                            <option selected>@Model.Age_bracket_at_death</option>
                             <option>Adult</option>
                             <option>Child</option>
                             <option>Infant</option>
@@ -565,7 +565,7 @@ document.getElementById("defaultOpen").click();
                     <div class="form-group">
                         <label asp-for="Sex" class="control-label">Sex</label>
                         <select asp-for="Sex" class="form-control">
-                            <option selected></option>
+                            <option selected>@Model.Sex</option>
                             <option>Male</option>
                             <option>Female</option>
                             <option>Unknown</option>
@@ -585,7 +585,7 @@ document.getElementById("defaultOpen").click();
                     <div class="form-group">
                         <label asp-for="Hair_color" class="control-label">Hair Color</label>
                         <select asp-for="Hair_color" class="form-control">
-                            <option selected></option>
+                            <option selected>@Model.Hair_color</option>
                             <option>Brown</option>
                             <option>Black</option>
                             <option>Brown-red</option>

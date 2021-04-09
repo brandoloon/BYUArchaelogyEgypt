@@ -164,6 +164,20 @@ namespace BYUArchaeologyEgypt.Controllers
             _BurialContext.SaveChanges();
             return View("Success", burial);
         }
+        [HttpGet]
+        public IActionResult Edit(int bid)
+        {
+            var burial = _BurialContext.Burials.Where(b => b.BurialID == bid).FirstOrDefault();
+            ViewData["location"] = _BurialContext.Locations.Where(l => l.LocationId == burial.Location).FirstOrDefault();
+            return View(burial);
+        }
+        [HttpPost]
+        public IActionResult Edit(Burial burial)
+        {
+            _BurialContext.Burials.Update(burial);
+            _BurialContext.SaveChanges();
+            return View("Success", burial);
+        }
         public IActionResult Success(Burial burial)
         {
             return View();
