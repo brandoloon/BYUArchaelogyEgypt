@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using BYUArchaeologyEgypt.Views.ViewModels;
 
 namespace BYUArchaeologyEgypt.Controllers
 {
@@ -28,10 +29,29 @@ namespace BYUArchaeologyEgypt.Controllers
             return View();
         }
 
-        public IActionResult BurialList() 
+        public IActionResult BurialList(long? categoryId, int pageNum = 1) 
         {
-            return View(_BurialContext.Burials);
+            int pageSize = 2;
+
+            return View(new BurialListViewModel
+            {
+                Burials = (_BurialContext.Burials
+                .Where(b => b.Estimated_age_at_death == categoryId || categoryId == null)
+                .OrderBy(x => x.BurialID)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()),
+
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+                    TotalNumItems = _BurialContext.Burials.Count()
+                }
+            }
+                );
         }
+                
 
         [HttpGet]
         public IActionResult Add()

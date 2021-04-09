@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BYUArchaeologyEgypt.Models.Burial>
+﻿@*@model IEnumerable<BYUArchaeologyEgypt.Models.Burial>*@
+
+@model BurialListViewModel
 
 @{
     ViewData["Title"] = "BurialList";
@@ -13,102 +15,102 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Tomb_number)
+                Tomb Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+                Location
+            </th>
+            @*<th>
+                Area Hill Burials
+            </th>*@
+            <th>
+                Burial Depth
+            </th>
+            @*<th>
+                South to Head
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Area_hill_burials)
+                South to Feet
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Burial_depth)
+                West to Head
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.South_to_head)
+                West to Feet
+            </th>*@
+            <th>
+                Length of Remains
+            </th>
+            @*<th>
+                Sample Number
+            </th>*@
+            <th>
+                Artifact Found
+            </th>
+            @*<th>
+                Artifact's Description
+            </th>*@
+            <th>
+                Hair Taken
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.South_to_feet)
+                Soft Tissue
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.West_to_head)
+                Bone Taken
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.West_to_feet)
+                Tooth Taken
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Length_of_remains)
+                Textile Taken
+            </th>
+            @*<th>
+                Description of Taken
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sample_number)
+                GE Function
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Artifact_found)
+                Burial Situation
+            </th>*@
+            <th>
+                Sex
+            </th>
+            @*<th>
+                Sex Method
+            </th>*@
+            <th>
+                Hair Color
+            </th>
+            @*<th>
+                Burial Wrapping
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Artifacts_description)
+                Preservation
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hair_taken)
-            </th>
+                Age Bracket At Death
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Soft_tissue)
+                Estimated Age At Death
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bone_taken)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tooth_taken)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Texile_taken)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description_of_taken)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GE_function)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Burial_situation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex_Method)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hair_color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Burial_wrapping)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preservation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age_bracket_at_death)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estimated_age_at_death)
-            </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Age_Method)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estimate_living_stature)
+            </th>*@
+            <th>
+                Year Found
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Year_found)
+                Month Found
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Month_found)
+                Day Found
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Day_found)
-            </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Head_direction)
             </th>
             <th>
@@ -311,12 +313,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Burial_Icon2)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Burials) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Tomb_number)
@@ -324,13 +326,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Area_hill_burials)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Burial_depth)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.South_to_head)
             </td>
             <td>
@@ -341,19 +343,19 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.West_to_feet)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Length_of_remains)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Sample_number)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Artifact_found)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Artifacts_description)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Hair_taken)
             </td>
@@ -369,7 +371,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Texile_taken)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Description_of_taken)
             </td>
             <td>
@@ -377,17 +379,17 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Burial_situation)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Sex_Method)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Hair_color)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Burial_wrapping)
             </td>
             <td>
@@ -395,16 +397,16 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Age_bracket_at_death)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Estimated_age_at_death)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Age_Method)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estimate_living_stature)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Year_found)
             </td>
@@ -414,7 +416,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Day_found)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Head_direction)
             </td>
             <td>
@@ -617,7 +619,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Burial_Icon2)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.BurialID">Edit</a> |
                 <a asp-action="Details" asp-route-bid="@item.BurialID">Details</a> |
@@ -627,3 +629,8 @@
 }
     </tbody>
 </table>
+
+<div page-info="@Model.PageNumberingInfo" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-light" page-class-selected="btn-primary"
+     class="btn-group pull-right m-1">
+</div>

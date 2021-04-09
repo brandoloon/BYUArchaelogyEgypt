@@ -76,6 +76,10 @@ namespace BYUArchaeologyEgypt
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("pageNumber",
+                    "{pagenum}",
+                     new { Contoller = "Home", action = "BurialList" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
