@@ -177,7 +177,36 @@ namespace BYUArchaeologyEgypt.Controllers
             ViewData["bone"] = _BurialContext.FileOnFileSystemModels.Where(i => i.Id == burial.BoneBookOnSystem).FirstOrDefault();
             return View(burial);
         }
-
+        [HttpGet]
+        public IActionResult LocationCreate()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult LocationCreate(Location location)
+        {
+            _BurialContext.Locations.Add(location);
+            _BurialContext.SaveChanges();
+            ViewData["location"] = location;
+            return View("Create");
+        }
+        [HttpGet]
+        public IActionResult BiologicalSampleCreate(int bid)
+        {
+            ViewData["burial"] = _BurialContext.Burials.Where(b => b.BurialID == bid).FirstOrDefault();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BiologicalSampleCreate(BiologicalSample biologicalSample)
+        {
+            _BurialContext.BiologicalSamples.Add(biologicalSample);
+            _BurialContext.SaveChanges();
+            return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
+        }
+        public IActionResult BiologicalSampleList(int bid)
+        {
+            return View(_BurialContext.BiologicalSamples.Where(bs => bs.Burial == bid));
+        }
         public IActionResult Privacy()
         {
             return View();

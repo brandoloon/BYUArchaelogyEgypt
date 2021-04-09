@@ -53,11 +53,7 @@ namespace BYUArchaeologyEgypt.Models
         [DisplayName("Length of Remains")]
         public int Length_of_remains { get; set; }
         [DisplayName("Sample Number")]
-        public int Sample_number { get; set; }
-        [DisplayName("Biological Samples")]
-        public List<BiologicalSample> BiologicalSamples { get; set; }
-        [DisplayName("Artifact Found")]
-        [Required]
+        public int Sample_number { get; set; }        [Required]
         public bool Artifact_found { get; set; }
         [DisplayName("Artifact's Description")]
         public string Artifacts_description { get; set; }
@@ -85,29 +81,18 @@ namespace BYUArchaeologyEgypt.Models
         public string Burial_situation { get; set; }
         [DisplayName("Sex")]
         [Required]
-        [ForeignKey("Sex")]
-        public int Sex { get; set; }
-        [DisplayName("Gender GE")]
+        public string Sex { get; set; }
         [Required]
-        [ForeignKey("Sex")]
-        public int Gender_GE { get; set; }
-        [DisplayName("Sex Method")]
         public string Sex_Method { get; set; }
         [DisplayName("Hair Color")]
         [Required]
-        [ForeignKey("HairColor")]
-        public int Hair_color { get; set; }
-        [DisplayName("Burial Wrapping")]
+        public string Hair_color { get; set; }
         [Required]
-        [ForeignKey("BurialWrapping")]
-        public int Burial_wrapping { get; set; }
-        [DisplayName("Preservation")]
+        public string Burial_wrapping { get; set; }
         public string Preservation { get; set; }
         [DisplayName("Age Bracket at Death")]
         [Required]
-        [ForeignKey("AgeAtDeath")]
-        public int Age_bracket_at_death { get; set; }
-        [DisplayName("Estimated Age at Death")]
+        public string Age_bracket_at_death { get; set; }
         public int Estimated_age_at_death { get; set; }
         [DisplayName("Age Method")]
         public string Age_Method { get; set; }

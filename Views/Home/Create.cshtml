@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var location = (Location)ViewData["location"];
 }
 
 <div class="container">
@@ -42,8 +43,8 @@ document.getElementById("defaultOpen").click();
                         <span asp-validation-for="Tomb_number" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Location" class="control-label">Location</label>
-                        <input asp-for="Location" class="form-control" />
+                        <label asp-for="Location" class="control-label"></label>
+                        <input hidden asp-for="Location" value="@location.LocationId" class="form-control" />
                         <span asp-validation-for="Location" class="text-danger"></span>
                     </div>
                     <div class="form-group">

@@ -1,0 +1,155 @@
+﻿@model IEnumerable<BYUArchaeologyEgypt.Models.BiologicalSample>
+
+@{
+    ViewData["Title"] = "BiologicalSampleList";
+}
+
+<h1>BiologicalSampleList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Burial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RackNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BagNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClusterNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFound)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreviouslySampled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initials)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C14_2017)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConventionalC14Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C14CalendarDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalendarDateMAX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalendarDateMIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalendarDateSPAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalendarDateAVG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Burial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RackNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BagNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClusterNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreviouslySampled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Initials)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C14_2017)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConventionalC14Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C14CalendarDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalendarDateMAX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalendarDateMIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalendarDateSPAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalendarDateAVG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SampleId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SampleId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SampleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

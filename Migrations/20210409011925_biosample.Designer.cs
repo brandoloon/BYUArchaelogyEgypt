@@ -4,20 +4,38 @@ using BYUArchaeologyEgypt.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BYUArchaeologyEgypt.Migrations
 {
     [DbContext(typeof(BurialContext))]
-    partial class BurialContextModelSnapshot : ModelSnapshot
+    [Migration("20210409011925_biosample")]
+    partial class biosample
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("BYUArchaeologyEgypt.Models.AgeAtDeath", b =>
+                {
+                    b.Property<int>("AgeCode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AgeDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AgeCode");
+
+                    b.ToTable("AgesAtDeath");
+                });
 
             modelBuilder.Entity("BYUArchaeologyEgypt.Models.BiologicalSample", b =>
                 {
@@ -33,6 +51,9 @@ namespace BYUArchaeologyEgypt.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Burial")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BurialID")
                         .HasColumnType("int");
 
                     b.Property<int>("C14CalendarDate")
@@ -91,6 +112,8 @@ namespace BYUArchaeologyEgypt.Migrations
 
                     b.HasKey("SampleId");
 
+                    b.HasIndex("BurialID");
+
                     b.ToTable("BiologicalSamples");
                 });
 
@@ -104,9 +127,8 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<string>("Age_Method")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Age_bracket_at_death")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Age_bracket_at_death")
+                        .HasColumnType("int");
 
                     b.Property<string>("Area_hill_burials")
                         .IsRequired()
@@ -163,9 +185,8 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<string>("Burial_situation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Burial_wrapping")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Burial_wrapping")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Button_osteoma")
                         .HasColumnType("bit");
@@ -218,9 +239,8 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<float>("GE_function")
                         .HasColumnType("real");
 
-                    b.Property<string>("Gender_GE")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Gender_GE")
+                        .HasColumnType("int");
 
                     b.Property<int>("Gonian")
                         .HasColumnType("int");
@@ -228,9 +248,8 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<string>("Goods")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Hair_color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Hair_color")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Hair_taken")
                         .HasColumnType("bit");
@@ -344,9 +363,8 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.Property<int>("Sciatic_notch")
                         .HasColumnType("int");
 
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Sex")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sex_Method")
                         .HasColumnType("nvarchar(max)");
@@ -428,6 +446,22 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.ToTable("Burials");
                 });
 
+            modelBuilder.Entity("BYUArchaeologyEgypt.Models.BurialWrapping", b =>
+                {
+                    b.Property<int>("BurialWrappingCode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BurialWrappingDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BurialWrappingCode");
+
+                    b.ToTable("BurialWrappings");
+                });
+
             modelBuilder.Entity("BYUArchaeologyEgypt.Models.FileOnFileSystemModel", b =>
                 {
                     b.Property<int>("Id")
@@ -459,6 +493,22 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FileOnFileSystemModels");
+                });
+
+            modelBuilder.Entity("BYUArchaeologyEgypt.Models.HairColor", b =>
+                {
+                    b.Property<int>("HairColorCode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("HairColorDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HairColorCode");
+
+                    b.ToTable("HairColors");
                 });
 
             modelBuilder.Entity("BYUArchaeologyEgypt.Models.Location", b =>
@@ -499,6 +549,29 @@ namespace BYUArchaeologyEgypt.Migrations
                     b.HasKey("LocationId");
 
                     b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("BYUArchaeologyEgypt.Models.Sex", b =>
+                {
+                    b.Property<int>("SexCode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SexDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SexCode");
+
+                    b.ToTable("Sexes");
+                });
+
+            modelBuilder.Entity("BYUArchaeologyEgypt.Models.BiologicalSample", b =>
+                {
+                    b.HasOne("BYUArchaeologyEgypt.Models.Burial", null)
+                        .WithMany("BiologicalSamples")
+                        .HasForeignKey("BurialID");
                 });
 #pragma warning restore 612, 618
         }
