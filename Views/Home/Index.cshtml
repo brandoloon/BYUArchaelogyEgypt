@@ -1,11 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Fag el-Gamous Burial Records";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<body class="bg-dark text-light">
+<body>
     <div class="text-center">
-        <h1 class="display-4">Welcome to Fag el-Gamous</h1>
+        <h1 class="display-3">Welcome to Fag el-Gamous</h1>
+        <div class="font-weight-bold">
+            <br /><br />
+            <p>
+                Fag el-Gamous (which means Way of the Water Buffalo) is a large and important cemetery in Egypt that has been under archeological investigation
+                (primarily by BYU researchers) for over 25 years. The excavation has garnered international attention because of the interesting insights gained
+                by studying the Fag el-Gamous mummies.
+            </p> <br />
+            <p>
+                During multiple years of study, researchers have excavated more than 1,000 mummies and collected data in field notes, spreadsheets, and simple
+                databases about each mummy’s location, physical orientation in the ground, burial depth, hair color, wrapping (including information about the
+                textiles used), gender, age, bone (including skull and teeth) dimensions, items accompanying the mummy, and more. And, of course, there are many,
+                many photographs. Offsite, researchers have performed a variety of analyses on the items excavated including carbon dating, DNA sequencing, and others.
+            </p> <br />
+        </div>
 
-        <br /><br />
-        <a class="btn btn-block" asp-controller="Home" asp-action="List">Look at the Burial Information</a>
+        <a class="btn btn-dark" style="color:dimgrey" asp-controller="Home" asp-action="List">Search the Burial Information</a>
+    </div>
+    <br />
+    <div class="text-center">
+        <img class="rounded" style="width:400px; height:400px;" src="~/mummy.jpg" />
     </div>
 </body>

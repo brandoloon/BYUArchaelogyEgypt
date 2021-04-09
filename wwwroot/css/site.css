@@ -59,8 +59,11 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: url(../Sand-dunes-Sahara-Morocco.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .footer {
   position: absolute;
