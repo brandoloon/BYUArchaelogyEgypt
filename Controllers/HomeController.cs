@@ -225,6 +225,11 @@ namespace BYUArchaeologyEgypt.Controllers
         }
 
         // BIOLOGICAL SAMPLE VIEWS
+        public IActionResult BiologicalSampleList(int bid)
+        {
+            return View(_BurialContext.BiologicalSamples.Where(bs => bs.Burial == bid));
+        }
+
         [HttpGet]
         [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleCreate(int bid)
@@ -240,9 +245,21 @@ namespace BYUArchaeologyEgypt.Controllers
             _BurialContext.SaveChanges();
             return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
         }
-        public IActionResult BiologicalSampleList(int bid)
+
+        [HttpGet]
+        [Authorize(Roles = "Researcher")]
+        public IActionResult BiologicalSampleEdit(int bsid)
         {
-            return View(_BurialContext.BiologicalSamples.Where(bs => bs.Burial == bid));
+            ViewData["burial"] = _BurialContext.BiologicalSamples.Where(b => b.SampleId == bsid).FirstOrDefault();
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "Researcher")]
+        public IActionResult BiologicalSampleEdit(BiologicalSample biologicalSample)
+        {
+            _BurialContext.BiologicalSamples.Add(biologicalSample);
+            _BurialContext.SaveChanges();
+            return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
         }
 
         // EXTRA VIEWS
