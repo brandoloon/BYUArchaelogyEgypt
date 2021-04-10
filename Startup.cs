@@ -29,8 +29,7 @@ namespace BYUArchaeologyEgypt
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BurialContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Helpers.GetRDSConnectionString()));
             
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
