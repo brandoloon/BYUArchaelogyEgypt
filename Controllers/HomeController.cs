@@ -1,5 +1,4 @@
 ﻿using BYUArchaeologyEgypt.Models;
-using BYUArchaeologyEgypt.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -53,10 +52,8 @@ namespace BYUArchaeologyEgypt.Controllers
                     CurrentPage = pageNum,
                     TotalNumItems = _BurialContext.Burials.Count()
                 }
-            }
-                );
+            });
         }
-
 
         [HttpGet]
         [Authorize(Roles = "Researcher")]
