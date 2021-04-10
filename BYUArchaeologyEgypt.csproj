@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Files\" />
     <Folder Include="wwwroot\img\Files\" />
   </ItemGroup>
 
