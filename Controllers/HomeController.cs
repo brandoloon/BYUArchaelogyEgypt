@@ -101,6 +101,15 @@ namespace BYUArchaeologyEgypt.Controllers
             return RedirectToAction("BurialList", new { ID = id });
         }
                 
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            Burial burial = _BurialContext.Burials.Find(id);
+            _BurialContext.Remove(burial);
+            _BurialContext.SaveChanges();
+            return RedirectToAction("BurialList");
+        }
+
 
         [HttpGet]
         [Authorize(Roles = "Researcher")]
