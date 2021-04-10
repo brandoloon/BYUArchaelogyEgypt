@@ -10,6 +10,6 @@ namespace BYUArchaeologyEgypt.Views.ViewModels
     {
         public List<Burial> Burials { get; set; }
         public PageNumberingInfo PageNumberingInfo { get; set; }
-
+        public List<Burial> tasks { get; set; }
     }
 }
