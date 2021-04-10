@@ -88,8 +88,7 @@ namespace BYUArchaeologyEgypt.Controllers
                     TotalNumItems = query.Count()
                 },
                 tasks = tasks
-            }
-                );
+            });
         }
 
 
