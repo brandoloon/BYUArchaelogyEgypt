@@ -227,9 +227,21 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate(Location location)
         {
-            _BurialContext.Locations.Add(location);
+            var findLocation = _BurialContext.Locations.Where(l =>
+                l.HighPairNS == location.HighPairNS &&
+                l.LowPairNS == location.LowPairNS &&
+                l.BurialLocationNS == location.BurialLocationNS &&
+                l.HighPairEW == location.HighPairEW &&
+                l.LowPairEW == location.LowPairEW &&
+                l.BurialLocationEW == location.BurialLocationEW &&
+                l.Subplot == location.Subplot).First();
+            if (findLocation == null)
+            {
+                _BurialContext.Locations.Add(location);
+                ViewData["location"] = location;
+            }
+            else ViewData["location"] = findLocation;
             _BurialContext.SaveChanges();
-            ViewData["location"] = location;
             return View("Create");
         }
         [HttpGet]
