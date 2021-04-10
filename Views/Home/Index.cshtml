@@ -4,10 +4,17 @@
 }
 <body>
     <div class="text-center">
+        <img src="~/realBeetle2.png">
+    </div>
+    
+    <div class="text-center">
         <h1 class="display-3">Welcome to Fag el-Gamous</h1>
-        <div class="font-weight-bold">
+    </div>
+    
+    <div class="text-center">
+        <div class="font-weight-bold textBack rounded mb-4">
             <br /><br />
-            <p>
+            <p class="">
                 Fag el-Gamous (which means Way of the Water Buffalo) is a large and important cemetery in Egypt that has been under archeological investigation
                 (primarily by BYU researchers) for over 25 years. The excavation has garnered international attention because of the interesting insights gained
                 by studying the Fag el-Gamous mummies.
@@ -20,10 +27,7 @@
             </p> <br />
         </div>
 
-        <a class="btn btn-dark" style="color:dimgrey" asp-controller="Home" asp-action="List">Search the Burial Information</a>
+        <a class="btn buttonBack" asp-controller="Home" asp-action="BurialList"><strong>Search the Burial Information</strong></a>
     </div>
     <br />
-    <div class="text-center">
-        <img class="rounded" style="width:400px; height:400px;" src="~/mummy.jpg" />
-    </div>
 </body>

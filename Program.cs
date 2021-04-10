@@ -1,5 +1,5 @@
 using BYUArchaeologyEgypt.Areas.Identity.Data;
-using BYUArchaeologyEgypt.Data;
+using BYUArchaeologyEgypt.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +24,7 @@ namespace BYUArchaeologyEgypt
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    var context = services.GetRequiredService<BYUArchaeologyEgyptContext>();
+                    var context = services.GetRequiredService<BurialContext>();
                     var userManager = services.GetRequiredService<UserManager<BYUArchaeologyEgyptUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await ContextSeed.SeedRolesAsync(userManager, roleManager);

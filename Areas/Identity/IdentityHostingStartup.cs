@@ -1,6 +1,6 @@
 ﻿using System;
 using BYUArchaeologyEgypt.Areas.Identity.Data;
-using BYUArchaeologyEgypt.Data;
+using BYUArchaeologyEgypt.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -16,13 +16,10 @@ namespace BYUArchaeologyEgypt.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<BYUArchaeologyEgyptContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("BYUArchaeologyEgyptContextConnection")));
 
                 services.AddDefaultIdentity<BYUArchaeologyEgyptUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<IdentityRole>()
-                    .AddEntityFrameworkStores<BYUArchaeologyEgyptContext>();
+                    .AddEntityFrameworkStores<BurialContext>();
             });
         }
     }

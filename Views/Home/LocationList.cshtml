@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BYUArchaeologyEgypt.Models.Location>
+
+@{
+    ViewData["Title"] = "LocationList";
+}
+
+<h1>LocationList</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialLocationNS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialLocationEW)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowPairNS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HighPairNS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowPairEW)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HighPairEW)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subplot)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialLocationNS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialLocationEW)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LowPairNS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighPairNS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LowPairEW)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighPairEW)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subplot)
+            </td>
+            <td>
+                <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a>
+                <a asp-action="BurialList">View Burials</a> | 
+                @if (User.IsInRole("Admin"))
+                {<text> | </text><a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

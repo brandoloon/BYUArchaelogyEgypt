@@ -8,12 +8,29 @@
     <link runat="server" rel="icon" href="~/favicon.ico" type="image/ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <!--
+       #fefefe;
+    -->
+    <style>
+        .textBack {
+            background-color: #decdc6;
+            background: rgba(222, 205, 198, 0.3);
+        }
+        .buttonBack {
+            background-color: #decdc6;
+            background: rgba(0, 0, 0, 0.15);
+        }
+        a:hover.buttonBack {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BYU Egypt Excavation Project</a>
+                <h1>Fag el-Famous</h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,16 +45,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialList">Burial List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="List">Biological Samples List</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationList">Lcoations List</a>
                         </li>
                         <!--Add Burial Just for Authenticated User-->
-                        @*@if (User.IsInRole("Researcher"))
-                        {*@
+                        @if (User.IsInRole("Researcher"))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationCreate">Add Burial Information</a>
                             </li>
-                        @*}*@
-                        </ul>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
