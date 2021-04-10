@@ -694,11 +694,11 @@
                             @Html.DisplayFor(modelItem => item.Burial_Icon2)
                         </td>*@
             <td>
-                <a class="btn btn-sm btn-dark" asp-action="Details" asp-route-bid="@item.BurialID">Details</a>
+                <a class="btn btn-sm btn-dark" asp-action="Details" asp-route-bid="@task.BurialID">Details</a>
                 @if (User.IsInRole("Researcher"))
-                {<a class="btn btn-sm btn-danger" asp-action="Edit" asp-route-id="@item.BurialID">Edit</a><text> |</text>}
+                {<a class="btn btn-sm btn-danger" asp-action="Edit" asp-route-id="@task.BurialID">Edit</a><text> |</text>}
                 @if (User.IsInRole("Admin"))
-                {<text> | </text><a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.BurialID">Delete</a>}
+                {<text> | </text><a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@task.BurialID">Delete</a>}
             </td>
                 </tr>
             }

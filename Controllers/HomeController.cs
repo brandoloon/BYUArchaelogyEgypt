@@ -100,12 +100,6 @@ namespace BYUArchaeologyEgypt.Controllers
             string id = string.Join('-', filter);
             return RedirectToAction("BurialList", new { ID = id });
         }
-
-        TotalNumItems = _BurialContext.Burials.Count()
-                }
-            }
-                );
-        }
                 
 
         [HttpGet]
