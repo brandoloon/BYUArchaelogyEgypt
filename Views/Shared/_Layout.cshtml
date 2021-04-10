@@ -28,16 +28,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialList">Burial List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="List">Biological Samples List</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationList">Lcoations List</a>
                         </li>
                         <!--Add Burial Just for Authenticated User-->
-                        @*@if (User.IsInRole("Researcher"))
-                        {*@
+                        @if (User.IsInRole("Researcher"))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationCreate">Add Burial Information</a>
                             </li>
-                        @*}*@
-                        </ul>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>

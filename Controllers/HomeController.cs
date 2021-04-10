@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using BYUArchaeologyEgypt.Views.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BYUArchaeologyEgypt.Controllers
 {
@@ -29,6 +30,7 @@ namespace BYUArchaeologyEgypt.Controllers
             return View();
         }
 
+        // BURIAL VIEWS
         public IActionResult BurialList(long? categoryId, int pageNum = 1)
         {
             int pageSize = 5;
@@ -54,27 +56,17 @@ namespace BYUArchaeologyEgypt.Controllers
             }
                 );
         }
-                
+
 
         [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Add(Burial burial)
-        {
-            return View();
-        }
-
-        [HttpGet]
+        [Authorize(Roles = "Researcher")]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Researcher")]
         public async Task<IActionResult> CreateAsync(Burial burial, 
             IFormFile img_file, string img_description,
             IFormFile notes_file, string notes_description,
@@ -187,25 +179,25 @@ namespace BYUArchaeologyEgypt.Controllers
             _BurialContext.SaveChanges();
             return View("Success", burial);
         }
+
         [HttpGet]
+        [Authorize(Roles = "Researcher")]
         public IActionResult Edit(int bid)
         {
             var burial = _BurialContext.Burials.Where(b => b.BurialID == bid).FirstOrDefault();
             ViewData["location"] = _BurialContext.Locations.Where(l => l.LocationId == burial.Location).FirstOrDefault();
             return View(burial);
         }
+
         [HttpPost]
+        [Authorize(Roles = "Researcher")]
         public IActionResult Edit(Burial burial)
         {
             _BurialContext.Burials.Update(burial);
             _BurialContext.SaveChanges();
             return View("Success", burial);
         }
-        public IActionResult Success(Burial burial)
-        {
-            return View();
-        }
-        [HttpGet]
+
         public IActionResult Details(int bid)
         {
             var burial = _BurialContext.Burials.Where(l => l.BurialID == bid).FirstOrDefault();
@@ -214,12 +206,28 @@ namespace BYUArchaeologyEgypt.Controllers
             ViewData["bone"] = _BurialContext.FileOnFileSystemModels.Where(i => i.Id == burial.BoneBookOnSystem).FirstOrDefault();
             return View(burial);
         }
+
+        [Authorize(Roles = "Researcher")]
+        public IActionResult Success(Burial burial)
+        {
+            return View();
+        }
         [HttpGet]
+
+        // LOCATION VIEWS
+        [HttpGet]
+        public IActionResult LocationList()
+        {
+            return View(_BurialContext.Locations);
+        }
+        [HttpGet]
+        [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate(Location location)
         {
             _BurialContext.Locations.Add(location);
@@ -228,22 +236,65 @@ namespace BYUArchaeologyEgypt.Controllers
             return View("Create");
         }
         [HttpGet]
+        [Authorize(Roles = "Researcher")]
+        public IActionResult LocationEdit(int lid)
+        {
+            var location = _BurialContext.Locations.Where(l => l.LocationId == lid).FirstOrDefault();
+            return View(location);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Researcher")]
+        public IActionResult LocationEdit(Location location)
+        {
+            _BurialContext.Locations.Add(location);
+            _BurialContext.SaveChanges();
+            ViewData["location"] = location;
+            return View("BurialList");
+        }
+
+        // BIOLOGICAL SAMPLE VIEWS
+        public IActionResult BiologicalSampleList(int bid)
+        {
+            return View(_BurialContext.BiologicalSamples.Where(bs => bs.Burial == bid));
+        }
+
+        public IActionResult BiologicalSampleDetails(int bsid)
+        {
+            return View(_BurialContext.BiologicalSamples.Where(bs => bs.SampleId == bsid).FirstOrDefault());
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleCreate(int bid)
         {
             ViewData["burial"] = _BurialContext.Burials.Where(b => b.BurialID == bid).FirstOrDefault();
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleCreate(BiologicalSample biologicalSample)
         {
             _BurialContext.BiologicalSamples.Add(biologicalSample);
             _BurialContext.SaveChanges();
             return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
         }
-        public IActionResult BiologicalSampleList(int bid)
+
+        [HttpGet]
+        [Authorize(Roles = "Researcher")]
+        public IActionResult BiologicalSampleEdit(int bsid)
         {
-            return View(_BurialContext.BiologicalSamples.Where(bs => bs.Burial == bid));
+            return View(_BurialContext.BiologicalSamples.Where(b => b.SampleId == bsid).FirstOrDefault());
         }
+        [HttpPost]
+        [Authorize(Roles = "Researcher")]
+        public IActionResult BiologicalSampleEdit(BiologicalSample biologicalSample)
+        {
+            _BurialContext.BiologicalSamples.Add(biologicalSample);
+            _BurialContext.SaveChanges();
+            return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
+        }
+
+        // EXTRA VIEWS
         public IActionResult Privacy()
         {
             return View();

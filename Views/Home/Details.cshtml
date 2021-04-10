@@ -633,8 +633,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-controller="Home" asp-route-bid="@Model.BurialID">Edit</a> |
+    @if (User.IsInRole("Researcher"))
+    {<a asp-action="Edit" asp-controller="Home" asp-route-bid="@Model.BurialID">Edit Burial</a><text> |</text>}
     <a asp-action="BiologicalSampleList" asp-controller="Home" asp-route-bid="@Model.BurialID">View Samples for this Burial</a> |
-    <a asp-action="BiologicalSampleCreate" asp-controller="Home" asp-route-bid="@Model.BurialID">Add a Biological Sample</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.IsInRole("Researcher"))
+    {<a asp-action="BiologicalSampleCreate" asp-controller="Home" asp-route-bid="@Model.BurialID">Add a Biological Sample</a><text> |</text>}
+    <a asp-action="Index">Back to Burial List</a>
 </div>
