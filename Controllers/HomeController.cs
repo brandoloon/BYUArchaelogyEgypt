@@ -29,9 +29,12 @@ namespace BYUArchaeologyEgypt.Controllers
             return View();
         }
 
-        public IActionResult BurialList(long? categoryId, int pageNum = 1) 
+        public IActionResult BurialList(long? categoryId, int pageNum = 1)
         {
-            int pageSize = 2;
+            int pageSize = 5;
+            //ViewData["location"] = _BurialContext.Locations.Where(i => i.Id == item.Location).FirstOrDefault();
+            ViewData["locationList"] = _BurialContext.Locations.ToList();
+
 
             return View(new BurialListViewModel
             {
