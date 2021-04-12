@@ -70,6 +70,57 @@
                 <input name="filter" value="@ViewBag.Filters.YearFound" type="text" class="form-control">
             </div>
 
+
+            <div class="form-group">
+                <label>Location N or S:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationNS, ViewBag.Filters.LocationNS))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>N/S Lower Value:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationNSLower, ViewBag.Filters.LocationNSLowerValue))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>N/S Upper Value:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationNSUpper, ViewBag.Filters.LocationNSUpperValue))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Location E or W:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationEW, ViewBag.Filters.LocationEW))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>E/W Lower Value:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationEWLower, ViewBag.Filters.LocationEWLowerValue))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>E/W Upper Value:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationEWUpper, ViewBag.Filters.LocationEWUpperValue))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Location Subplot:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.LocationSubplot, ViewBag.Filters.LocationSubplot))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Filter</button>
 
             <a asp-action="BurialList" asp-route-id="" class="btn btn-primary">Clear</a>

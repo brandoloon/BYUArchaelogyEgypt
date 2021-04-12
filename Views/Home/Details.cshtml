@@ -742,7 +742,7 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Burial_Icon2)
             </dd>
-        @if (Model.ImgOnSystem != 0)
+        @if (Model.ImgOnSystem != null)
         {
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ImgOnSystem)
@@ -752,7 +752,7 @@
                 <img src="~/Files/img/@img.Name@img.Extension">
             </dd>
         }
-        @if (Model.NoteBookOnSystem != 0)
+        @if (Model.NoteBookOnSystem != null)
         {
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.NoteBookOnSystem)
@@ -762,7 +762,7 @@
                 <img src="~/Files/img/@notes.Name@notes.Extension">
             </dd>
         }
-        @if (Model.BoneBookOnSystem != 0)
+        @if (Model.BoneBookOnSystem != null)
         {
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.BoneBookOnSystem)
