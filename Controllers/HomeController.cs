@@ -341,6 +341,19 @@ namespace BYUArchaeologyEgypt.Controllers
             return View("BurialList");
         }
 
+        public IActionResult DownloadFileFromFileSystem(int id)
+        {
+            var file = _BurialContext.FileOnFileSystemModels.Where(x => x.Id == id).FirstOrDefault();
+            if (file == null) return null;
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(file.FilePath, FileMode.Open))
+            {
+                stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, file.FileType, file.Name + file.Extension);
+        }
+
         // BIOLOGICAL SAMPLE VIEWS
         public IActionResult BiologicalSampleList(int bid)
         {

@@ -748,8 +748,7 @@
                 @Html.DisplayNameFor(model => model.ImgOnSystem)
             </dt>
             <dd class="col-sm-10">
-                @img.Description
-                <img src="~/Files/img/@img.Name@img.Extension">
+                <a asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@img.Id">@img.Description</a>
             </dd>
         }
         @if (Model.NoteBookOnSystem != null)
@@ -758,8 +757,7 @@
                 @Html.DisplayNameFor(model => model.NoteBookOnSystem)
             </dt>
             <dd class="col-sm-10">
-                @notes.Description
-                <img src="~/Files/img/@notes.Name@notes.Extension">
+                <a asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@notes.Id">@notes.Description</a>
             </dd>
         }
         @if (Model.BoneBookOnSystem != null)
@@ -768,8 +766,7 @@
                 @Html.DisplayNameFor(model => model.BoneBookOnSystem)
             </dt>
             <dd class="col-sm-10">
-                @bone.Description
-                <img src="~/Files/img/@bone.Name@bone.Extension">
+                <a asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@bone.Id">@bone.Description</a>
             </dd>
         }
 
