@@ -38,7 +38,7 @@ namespace BYUArchaeologyEgypt
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (true)
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
@@ -53,6 +53,13 @@ namespace BYUArchaeologyEgypt
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<BurialContext>();
+                context.Database.Migrate();
+            }
 
             /** XSS Protection
             app.Use(async (context, next) =>
