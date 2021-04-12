@@ -10,21 +10,25 @@ namespace BYUArchaeologyEgypt.Models
         //Constructor for filter class setting all necessary inputs to all
         public Filters(string filterstring)
         {
-            FilterString = filterstring ?? "all-all-all-all-all- -all-all-all-all-all-all-all";
+            FilterString = filterstring ?? "all-all-all-all-all-all----";
             string[] filters = FilterString.Split('-');
             HairColorId = filters[0];
             BurialWrapping = filters[1];
             AgeBracketAtDeath = filters[2];
             Sex = filters[3];
             BonesCollected = filters[4];
-            YearFound = filters[5];
-            LocationNS = filters[6];
-            LocationEW = filters[7];
-            LocationNSLowerValue = filters[8];
-            LocationNSUpperValue = filters[9];
-            LocationEWLowerValue = filters[10];
-            LocationEWUpperValue = filters[11];
-            LocationSubplot = filters[12];
+            HeadDirection = filters[5];
+            ArtifactDescription = filters[6];
+            YearFound = filters[7];
+            //LocationNS = filters[6];
+            //LocationEW = filters[7];
+            //LocationNSLowerValue = filters[8];
+            //LocationNSUpperValue = filters[9];
+            //LocationEWLowerValue = filters[10];
+            //LocationEWUpperValue = filters[11];
+            //LocationSubplot = filters[12];
+            Length = filters[8];
+            Depth = filters[9];
         }
         public string FilterString { get; }
         public string HairColorId { get; }
@@ -33,6 +37,11 @@ namespace BYUArchaeologyEgypt.Models
         public string Sex { get; }
         public string BonesCollected { get; }
         public string YearFound { get; }
+        public string Length { get; }
+        public string Depth { get; }
+        public string HeadDirection { get; }
+        public string ArtifactDescription { get; }
+
 
         //Location values to filter by
         public string LocationNS { get; }
@@ -54,6 +63,12 @@ namespace BYUArchaeologyEgypt.Models
         public bool HasSex => Sex.ToLower() != "all";
         public bool HasBonesCollected => BonesCollected.ToLower() != "all";
         public bool HasYearFound => YearFound.ToLower() != "";
+        public bool HasLength => Length.ToLower() != "";
+        public bool HasDepth => Depth.ToLower() != "";
+        public bool HasHeadDirection => HeadDirection.ToLower() != "all";
+        public bool HasArtifactDescription => ArtifactDescription.ToLower() != "";
+
+
 
         //Sees if location filters are in place
         public bool HasLocationNS => LocationNS.ToLower() != "all";
