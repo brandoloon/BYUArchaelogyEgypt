@@ -20,9 +20,17 @@
             background-color: #decdc6;
             background: rgba(0, 0, 0, 0.15);
         }
-        a:hover.buttonBack {
+        :hover.buttonBack {
             background-color: black;
             color: white;
+        }
+        .textshadow {
+            color: black;
+            text-shadow: 0.07em 0 grey, 0 0.07em grey, -0.07em 0 grey, 0 -0.07em grey;
+        }
+        .centerYourSelf {
+            text-align:center !important;
+            justify-content:center !important;
         }
     </style>
 </head>
@@ -30,7 +38,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <h1>Fag el-Famous</h1>
+                <h1>Fag el-Gamous</h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,7 +53,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialList">Burial List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationList">Lcoations List</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LocationList">Locations List</a>
                         </li>
                         <!--Add Burial Just for Authenticated User-->
                         @if (User.IsInRole("Researcher"))
