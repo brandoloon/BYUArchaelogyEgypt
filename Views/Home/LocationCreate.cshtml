@@ -3,59 +3,75 @@
 @{
     ViewData["Title"] = "Location Input";
 }
+<div class="text-center">
+    <h1>Add New Location</h1>
+</div>
 
-<h1>LocationCreate</h1>
 
-<h4>Location</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center textBack font-weight-bold">
+
+    <div class="col-md-4 rounded">
         <form asp-action="LocationCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BurialLocationNS" class="control-label"></label>
+                <p>
+                    North or South? <br />(Please enter N or S)
+                </p>
                 <input asp-for="BurialLocationNS" class="form-control" />
                 <span asp-validation-for="BurialLocationNS" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BurialLocationEW" class="control-label"></label>
+                <p>
+                    East or West? <br />(Please enter E or W)
+                </p>
                 <input asp-for="BurialLocationEW" class="form-control" />
                 <span asp-validation-for="BurialLocationEW" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LowPairNS" class="control-label"></label>
+                <p>
+                    North or South? <br />(Please enter N or S)
+                </p>
                 <input asp-for="LowPairNS" class="form-control" />
                 <span asp-validation-for="LowPairNS" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HighPairNS" class="control-label"></label>
+                <p>
+                    North or South? <br />(Please enter N or S)
+                </p>
                 <input asp-for="HighPairNS" class="form-control" />
                 <span asp-validation-for="HighPairNS" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LowPairEW" class="control-label"></label>
+                <p>
+                    East or West? <br />(Please enter E or W)
+                </p>
                 <input asp-for="LowPairEW" class="form-control" />
                 <span asp-validation-for="LowPairEW" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HighPairEW" class="control-label"></label>
+                <p>
+                    East or West? <br />(Please enter E or W)
+                </p>
                 <input asp-for="HighPairEW" class="form-control" />
                 <span asp-validation-for="HighPairEW" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Subplot" class="control-label"></label>
+                
                 <input asp-for="Subplot" class="form-control" />
                 <span asp-validation-for="Subplot" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn buttonBack" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

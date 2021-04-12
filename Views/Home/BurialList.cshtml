@@ -10,7 +10,8 @@
 <h1>Summary of Burials</h1>
 
 <p>
-    <a asp-action="LocationCreate">Add New</a>
+    @if (User.IsInRole("Researcher"))
+    { <a class="btn buttonBack" asp-action="LocationCreate">Add New</a>}
 </p>
 <table class="table text-center">
     <thead class="text-center">
