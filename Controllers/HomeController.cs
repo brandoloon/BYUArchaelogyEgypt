@@ -177,7 +177,7 @@ namespace BYUArchaeologyEgypt.Controllers
             // Image Upload
             if (img_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\img\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\img\\" + burial.BurialID +"\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(img_file.FileName);
@@ -211,7 +211,7 @@ namespace BYUArchaeologyEgypt.Controllers
             // Field Notes Upload
             if (notes_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\notes\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\notes\\" + burial.BurialID + "\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(notes_file.FileName);
@@ -243,9 +243,9 @@ namespace BYUArchaeologyEgypt.Controllers
                 }
             }
             // Bone Book Upload
-            if (img_file != null)
+            if (bone_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\bonebooks\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\bonebooks\\" + burial.BurialID + "\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(bone_file.FileName);
