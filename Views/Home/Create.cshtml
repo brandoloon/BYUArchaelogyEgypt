@@ -11,7 +11,7 @@
 
     <ul class="centerYourSelf nav nav-tabs font-weight-bold">
         <li class="nav-item"><a id="defaultOpen" class="active nav-link" data-toggle="tab" href="#Location">Location</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Bones" id="defaultOpen">Bones</a></li>
+        <li class="nav-item"><a id="bonesOpen" class="nav-link" data-toggle="tab" href="#Bones">Bones</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Skull">Skull</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Date">Date</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Other">Other</a></li>
@@ -21,10 +21,6 @@
 </div>
 
 
-<script>
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
 
 <div class="row textBack font-weight-bold centerYourSelf">
     <div class="col-md-4 align-items-center font-weight-bold">
@@ -654,6 +650,11 @@ document.getElementById("defaultOpen").click();
     </div>
 </div>
 
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    document.getElementById("bonesOpen").click();
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
