@@ -289,7 +289,7 @@ namespace BYUArchaeologyEgypt.Controllers
                 l.HighPairEW == location.HighPairEW &&
                 l.LowPairEW == location.LowPairEW &&
                 l.BurialLocationEW == location.BurialLocationEW &&
-                l.Subplot == location.Subplot).First();
+                l.Subplot == location.Subplot).FirstOrDefault();
             if (findLocation == null)
             {
                 _BurialContext.Locations.Add(location);
