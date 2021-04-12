@@ -1,16 +1,15 @@
 ﻿using BYUArchaeologyEgypt.Models;
+using BYUArchaeologyEgypt.Views.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using BYUArchaeologyEgypt.Views.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace BYUArchaeologyEgypt.Controllers
 {
@@ -31,7 +30,7 @@ namespace BYUArchaeologyEgypt.Controllers
         }
 
         // BURIAL VIEWS
-        public IActionResult BurialList(string id, int pageNum = 1)
+        public IActionResult BurialList(string id, int pageNum = 1, int lid = -1)
         {
             int pageSize = 5;
             ViewData["locationList"] = _BurialContext.Locations.ToList();
@@ -49,6 +48,8 @@ namespace BYUArchaeologyEgypt.Controllers
             ViewBag.LocationEWLower = _BurialContext.Locations.Select(x => x.LowPairEW).Distinct().ToList();
             ViewBag.LocationEWUpper = _BurialContext.Locations.Select(x => x.HighPairEW).Distinct().ToList();
             ViewBag.LocationSubplot = new List<string> { "NE", "NW", "SE", "SW" };
+            ViewBag.HeadDirection = new List<string> { "N", "S", "E", "W" };
+
 
 
             IQueryable<Burial> query = _BurialContext.Burials;
@@ -71,28 +72,51 @@ namespace BYUArchaeologyEgypt.Controllers
             }
             if (filters.HasBonesCollected)
             {
-                query = query.Where(t => t.Bone_taken == ("true" == filters.BonesCollected) );
+                query = query.Where(t => t.Bone_taken == ("true" == filters.BonesCollected));
             }
             if (filters.HasYearFound)
             {
                 query = query.Where(t => t.Year_found.ToString() == filters.YearFound);
             }
-
-            ////Location Filters
+            if (filters.HasLength)
+            {
+                query = query.Where(t => t.Length_of_remains.ToString() == filters.Length);
+            }
+            if (filters.HasDepth)
+            {
+                query = query.Where(t => t.Burial_depth.ToString() == filters.Depth);
+            }
+            if (filters.HasHeadDirection)
+            {
+                query = query.Where(t => t.Head_direction == filters.HeadDirection);
+            }
+            if (filters.HasArtifactDescription)
+            {
+                query = query.Where(t => t.Artifacts_description.Contains(filters.ArtifactDescription));
+            }
+            //Location Filters
             //if (filters.HasLocationNS)
             //{
             //    List<string> NSvalues = new List<string>();
 
             //    //get NS value for each burial
-            //    foreach (var item in ViewData["locationList"] as IEnumerable<Location>)
+            //    foreach (var item in _BurialContext.Locations)
             //    {
             //        NSvalues.Add(item.BurialLocationNS);
             //    }
 
+
+            //    var queryable = NSvalues.AsQueryable();
+
             //    //compare to filter.LocationNS that the user input
-            //    query = query.Where(t => NSvalues[t.Location] == filters.LocationNS);
+            //    //query = query.Where(t => queryable.(t.Location) == filters.LocationNS);
+            //    //query = query.Where(t => null != locs.Where(x => x.BurialLocationNS == filters.LocationNS && x.LocationId == t.Location).FirstOrDefault());
             //}
 
+            if (lid != -1)
+            {
+                query = query.Where(d => d.Location == lid);
+            }
 
 
             var tasks = query.ToList();
@@ -124,7 +148,7 @@ namespace BYUArchaeologyEgypt.Controllers
             string id = string.Join('-', filter);
             return RedirectToAction("BurialList", new { ID = id });
         }
-                
+
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
@@ -144,7 +168,7 @@ namespace BYUArchaeologyEgypt.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Researcher")]
-        public async Task<IActionResult> CreateAsync(Burial burial, 
+        public async Task<IActionResult> CreateAsync(Burial burial,
             IFormFile img_file, string img_description,
             IFormFile notes_file, string notes_description,
             IFormFile bone_file, string bone_description)
