@@ -8,11 +8,76 @@
 }
 
 <h1>Summary of Burials</h1>
+<div class="row">
+
 
 <p>
     @if (User.IsInRole("Researcher"))
-    { <a class="btn buttonBack" asp-action="LocationCreate">Add New</a>}
+    {<a class="btn buttonBack" asp-action="LocationCreate">Add New</a>}
 </p>
+            <div class="col-sm-2">
+
+        <form asp-action="Filter" method="post">
+
+            <div class="form-group">
+                <label>Hair Color:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.HairColors, ViewBag.Filters.HairColorId))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            @*<div class="form-group">
+            <label>Location:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.Location, "Key", "Value", ViewBag.Filters.Due))">
+                <option value="all">All</option>
+            </select>
+        </div>*@
+
+            <div class="form-group">
+                <label>Burial Wrapping:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.BurialWrapping, ViewBag.Filters.BurialWrapping))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Age Bracket At Death:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.AgeBracketAtDeath, ViewBag.Filters.AgeBracketAtDeath))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Sex:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Sex, ViewBag.Filters.Sex))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Bones collected?:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.BonesCollected, ViewBag.Filters.BonesCollected))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Year Found:</label>
+                <input name="filter" value="@ViewBag.Filters.YearFound" type="text" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+
+            <a asp-action="BurialList" asp-route-id="" class="btn btn-primary">Clear</a>
+
+        </form>
+    </div>
 <table class="table text-center">
     <thead class="text-center">
         <tr>
@@ -630,18 +695,20 @@
             @Html.DisplayFor(modelItem => item.Burial_Icon2)
         </td>*@
             <td>
-                <a class="btn btn-sm btn-dark" asp-action="Details" asp-route-bid="@item.BurialID">Details</a>
+                <a class="btn btn-sm btn-dark" asp-action="Details" asp-route-bid="@task.BurialID">Details</a>
                 @if (User.IsInRole("Researcher"))
-                {<a class="btn btn-sm btn-danger" asp-action="Edit" asp-route-id="@item.BurialID">Edit</a><text> |</text>}
+                {<a class="btn btn-sm btn-danger" asp-action="Edit" asp-route-id="@task.BurialID">Edit</a><text> |</text>}
                 @if (User.IsInRole("Admin"))
-                {<text> | </text><a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.BurialID">Delete</a>}
+                {<text> | </text><a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@task.BurialID">Delete</a>}
             </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<div page-info="@Model.PageNumberingInfo" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-dark"
-     class="btn-group pull-right m-1">
+    <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-dark"
+         class="btn-group pull-right m-1">
+    </div>
 </div>
+

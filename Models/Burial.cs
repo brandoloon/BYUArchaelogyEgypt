@@ -37,6 +37,7 @@ namespace BYUArchaeologyEgypt.Models
         //will be run on these values
         public string Area_hill_burials { get; set; }
         [DisplayName("Burial Depth")]
+        [Required]
         public int Burial_depth { get; set; }
         [DisplayName("South to Head")]
         [Required]
@@ -277,7 +278,8 @@ namespace BYUArchaeologyEgypt.Models
         public bool Temporal_mandibular_joint_osteoarthritiis { get; set; }
         [DisplayName("Length of Burial")]
         public float Length_of_burial { get; set; }
-        [DisplayName("Goods")]
+        [DisplayName("Burial Goods")]
+        [Required]
         public string Goods { get; set; }
         [DisplayName("Face Bundle")]
         public string Face_Bundle { get; set; }

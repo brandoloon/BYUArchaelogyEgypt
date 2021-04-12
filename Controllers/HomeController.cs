@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using BYUArchaeologyEgypt.Views.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace BYUArchaeologyEgypt.Controllers
 {
@@ -30,17 +31,51 @@ namespace BYUArchaeologyEgypt.Controllers
         }
 
         // BURIAL VIEWS
-        public IActionResult BurialList(long? categoryId, int pageNum = 1)
+        public IActionResult BurialList(string id, int pageNum = 1)
         {
             int pageSize = 5;
-            //ViewData["location"] = _BurialContext.Locations.Where(i => i.Id == item.Location).FirstOrDefault();
             ViewData["locationList"] = _BurialContext.Locations.ToList();
+            var filters = new Filters(id);
+            ViewBag.Filters = filters;
+            ViewBag.HairColors = _BurialContext.Burials.Select(x => x.Hair_color).Distinct().ToList();
+            ViewBag.BurialWrapping = _BurialContext.Burials.Select(x => x.Burial_wrapping).Distinct().ToList();
+            ViewBag.AgeBracketAtDeath = _BurialContext.Burials.Select(x => x.Age_bracket_at_death).Distinct().ToList();
+            ViewBag.Sex = _BurialContext.Burials.Select(x => x.Sex).Distinct().ToList();
+            ViewBag.BonesCollected = new List<string> { "True", "False" };
 
+
+            IQueryable<Burial> query = _BurialContext.Burials;
+
+            if (filters.HasHairColor)
+            {
+                query = query.Where(t => t.Hair_color == filters.HairColorId);
+            }
+            if (filters.HasBurialWrapping)
+            {
+                query = query.Where(t => t.Burial_wrapping == filters.BurialWrapping);
+            }
+            if (filters.HasAgeBracket)
+            {
+                query = query.Where(t => t.Age_bracket_at_death == filters.AgeBracketAtDeath);
+            }
+            if (filters.HasSex)
+            {
+                query = query.Where(t => t.Sex == filters.Sex);
+            }
+            if (filters.HasBonesCollected)
+            {
+                query = query.Where(t => t.Bone_taken == ("true" == filters.BonesCollected) );
+            }
+            if (filters.HasYearFound)
+            {
+                query = query.Where(t => t.Year_found.ToString() == filters.YearFound);
+            }
+
+            var tasks = query.ToList();
 
             return View(new BurialListViewModel
             {
-                Burials = (_BurialContext.Burials
-                .Where(b => b.Estimated_age_at_death == categoryId || categoryId == null)
+                Burials = (query
                 .OrderBy(x => x.BurialID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
@@ -50,10 +85,31 @@ namespace BYUArchaeologyEgypt.Controllers
                 {
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
-                    TotalNumItems = _BurialContext.Burials.Count()
-                }
-            });
+                    TotalNumItems = query.Count()
+                },
+                tasks = tasks
+            }
+                );
         }
+
+
+
+        [HttpPost]
+        public IActionResult Filter(string[] filter)
+        {
+            string id = string.Join('-', filter);
+            return RedirectToAction("BurialList", new { ID = id });
+        }
+                
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            Burial burial = _BurialContext.Burials.Find(id);
+            _BurialContext.Remove(burial);
+            _BurialContext.SaveChanges();
+            return RedirectToAction("BurialList");
+        }
+
 
         [HttpGet]
         [Authorize(Roles = "Researcher")]
@@ -227,9 +283,21 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate(Location location)
         {
-            _BurialContext.Locations.Add(location);
+            var findLocation = _BurialContext.Locations.Where(l =>
+                l.HighPairNS == location.HighPairNS &&
+                l.LowPairNS == location.LowPairNS &&
+                l.BurialLocationNS == location.BurialLocationNS &&
+                l.HighPairEW == location.HighPairEW &&
+                l.LowPairEW == location.LowPairEW &&
+                l.BurialLocationEW == location.BurialLocationEW &&
+                l.Subplot == location.Subplot).First();
+            if (findLocation == null)
+            {
+                _BurialContext.Locations.Add(location);
+                ViewData["location"] = location;
+            }
+            else ViewData["location"] = findLocation;
             _BurialContext.SaveChanges();
-            ViewData["location"] = location;
             return View("Create");
         }
         [HttpGet]
