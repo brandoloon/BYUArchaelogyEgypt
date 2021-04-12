@@ -372,7 +372,7 @@ namespace BYUArchaeologyEgypt.Controllers
             var memory = new MemoryStream();
             using (var stream = new FileStream(file.FilePath, FileMode.Open))
             {
-                stream.CopyToAsync(memory);
+                stream.CopyTo(memory);
             }
             memory.Position = 0;
             return File(memory, file.FileType, file.Name + file.Extension);
