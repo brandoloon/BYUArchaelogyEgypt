@@ -8,775 +8,1267 @@
     var bone = (FileOnFileSystemModel)ViewData["bone"];
 }
 
-<h1>Details</h1>
+<!--
+    The following div will contain all the separate tables for the detailed information
+-->
+<div class="Main font-weight-bold">
+    <!--
+        This table will be for features related to location
+    -->
+    <h1>
+        Location Related Features
+    </h1>
 
-<div>
-    <h4>Burial</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BurialID)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BurialID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tomb_number)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tomb_number)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Area_hill_burials)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Area_hill_burials)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Burial_depth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Burial_depth)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.South_to_head)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.South_to_head)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.South_to_feet)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.South_to_feet)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.West_to_head)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.West_to_head)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.West_to_feet)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.West_to_feet)
-        </dd>
-        @if (Model.Length_of_remains != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Length_of_remains)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Length_of_remains)
-            </dd>
-        }
-        @if (Model.Sample_number != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Sample_number)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Sample_number)
-            </dd>
-        }
-        @if (Model.Artifact_found != false)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Artifact_found)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Artifact_found)
-            </dd>
-        }
-        @if (Model.Artifacts_description != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Artifacts_description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Artifacts_description)
-            </dd>
-        }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Hair_taken)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Hair_taken)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Soft_tissue)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bone_taken)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bone_taken)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tooth_taken)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tooth_taken)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Texile_taken)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Texile_taken)
-        </dd>
-        @if (Model.Description_of_taken != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Description_of_taken)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Description_of_taken)
-            </dd>
-        }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GE_function)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GE_function)
-        </dd>
-        @if (Model.Burial_situation != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Burial_situation)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Burial_situation)
-            </dd>
-        }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sex_Method)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sex_Method)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Hair_color)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Hair_color)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Burial_wrapping)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Burial_wrapping)
-        </dd>
-        @if (Model.Preservation != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Preservation)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Preservation)
-            </dd>
-        }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Age_bracket_at_death)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Age_bracket_at_death)
-        </dd>
-        @if (Model.Estimated_age_at_death != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Estimated_age_at_death)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Estimated_age_at_death)
-            </dd>
-        }
-        @if (Model.Age_Method != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Age_Method)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Age_Method)
-            </dd>
-        }
-        @if (Model.Estimate_living_stature != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Estimate_living_stature)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Estimate_living_stature)
-            </dd>
-        }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Year_found)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Year_found)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Month_found)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Month_found)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Day_found)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Day_found)
-        </dd>
-        @if (Model.Head_direction != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Head_direction)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Head_direction)
-            </dd>
-        }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Basilar_suture)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Basilar_suture)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ventral_arc)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ventral_arc)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Subpubic_angle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Subpubic_angle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sciatic_notch)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sciatic_notch)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Public_bone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Public_bone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Preaur_sulcus)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Preaur_sulcus)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Medial_IP_ramus)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Medial_IP_ramus)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Dorsal_pitting)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Dorsal_pitting)
-        </dd>
-        @if (Model.Foreman_magnum != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Foreman_magnum)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Foreman_magnum)
-            </dd>
-        }
-        @if (Model.femur_head != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.femur_head)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.femur_head)
-            </dd>
-        }
-        @if (Model.humerus_head != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.humerus_head)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.humerus_head)
-            </dd>
-        }
-        @if (Model.osteophytosis != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.osteophytosis)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.osteophytosis)
-            </dd>
-        }
-        @if (Model.public_symphysis != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.public_symphysis)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.public_symphysis)
-            </dd>
-        }
-        @if (Model.Bone_length != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Bone_length)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Bone_length)
-            </dd>
-        }
-        @if (Model.Medial_clavicle != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Medial_clavicle)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Medial_clavicle)
-            </dd>
-        }
-        @if (Model.Iliac_crest != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Iliac_crest)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Iliac_crest)
-            </dd>
-        }
-        @if (Model.Humerus != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Humerus)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Humerus)
-            </dd>
-        }
-        @if (Model.Humerus_length != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Humerus_length)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Humerus_length)
-            </dd>
-        }
-        @if (Model.Femur_diameter != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Femur_diameter)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Femur_diameter)
-            </dd>
-        }
-        @if (Model.Femur_length != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Femur_length)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Femur_length)
-            </dd>
-        }
-        @if (Model.Tibia_length != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Tibia_length)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Tibia_length)
-            </dd>
-        }
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Robust)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Robust)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Superorbital)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Superorbital)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Orbit_edge)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Orbit_edge)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Parietal_bossing)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Parietal_bossing)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Gonian)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Gonian)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Nuchal_crest)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Nuchal_crest)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Zygomatic_crest)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Zygomatic_crest)
-            </dd>
-        @if (Model.Cranial_suture != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Cranial_suture)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Cranial_suture)
-            </dd>
-        }
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Maxium_cranial_length)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Maxium_cranial_length)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Maximum_cranial_breadth)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Maximum_cranial_breadth)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Basion_bregma_height)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Basion_bregma_height)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Basion_nasion)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Basion_nasion)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Basion_prosthion_length)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Basion_prosthion_length)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Bizygomatic_diameter)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Bizygomatic_diameter)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Nasion_prosthion)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Nasion_prosthion)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Maximum_nasal_breadth)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Maximum_nasal_breadth)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Interorbital_breadth)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Interorbital_breadth)
-            </dd>
-        @if (Model.Tooth_attrition != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Tooth_attrition)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Tooth_attrition)
-            </dd>
-        }
-        @if (Model.Tooth_eruption != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Tooth_eruption)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Tooth_eruption)
-            </dd>
-        }
-        @if (Model.Pathology_anomalies != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Pathology_anomalies)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Pathology_anomalies)
-            </dd>
-        }
-        @if (Model.Epiphyseal_union != false)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Epiphyseal_union)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Epiphyseal_union)
-            </dd>
-        }
-        @if (Model.Date_on_skull != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Date_on_skull)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Date_on_skull)
-            </dd>
-        }
-        @if (Model.Field_book != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Field_book)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Field_book)
-            </dd>
-        }
-        @if (Model.Field_book_page_number != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Field_book_page_number)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Field_book_page_number)
-            </dd>
-        }
-        @if (Model.Initials_of_data_entry_expert != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Initials_of_data_entry_expert)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Initials_of_data_entry_expert)
-            </dd>
-        }
-        @if (Model.Initials_of_data_entry_checker != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Initials_of_data_entry_checker)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Initials_of_data_entry_checker)
-            </dd>
-        }
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BYU_sample)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BYU_sample)
-            </dd>
-        @if (Model.Body_analysis != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Body_analysis)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Body_analysis)
-            </dd>
-        }
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Skull_at_Magazine)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Skull_at_Magazine)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Postcrania_at_magazine)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Postcrania_at_magazine)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.To_be_Comfirmed)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.To_be_Comfirmed)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Skull_Trauma)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Skull_Trauma)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Postcrania_trauma)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Postcrania_trauma)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Cribra_Orbitala)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Cribra_Orbitala)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Porotic_Hyperostosis)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Porotic_Hyperostosis)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Porotic_Hyperostosis_Locations)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Porotic_Hyperostosis_Locations)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Metopic_suture)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Metopic_suture)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Button_osteoma)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Button_osteoma)
-            </dd>
-        @if (Model.Osteology_unknown_comment != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Osteology_unknown_comment)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Osteology_unknown_comment)
-            </dd>
-        }
-        @if (Model.Temporal_mandibular_joint_osteoarthritiis != false)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Temporal_mandibular_joint_osteoarthritiis)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Temporal_mandibular_joint_osteoarthritiis)
-            </dd>
-        }
-        @if (Model.Length_of_burial != 0)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Length_of_burial)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Length_of_burial)
-            </dd>
-        }
-        @if (Model.Goods != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Goods)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Goods)
-            </dd>
-        }
-        @if (Model.Face_Bundle != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Face_Bundle)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Face_Bundle)
-            </dd>
-        }
-        @if (Model.Osteology_Notes != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Osteology_Notes)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Osteology_Notes)
-            </dd>
-        }
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Burial_icon1)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Burial_icon1)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Burial_Icon2)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Burial_Icon2)
-            </dd>
-        @if (Model.ImgOnSystem != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ImgOnSystem)
-            </dt>
-            <dd class="col-sm-10">
-                <a asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@img.Id">@img.Description</a>
-            </dd>
-        }
-        @if (Model.NoteBookOnSystem != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NoteBookOnSystem)
-            </dt>
-            <dd class="col-sm-10">
-                <a asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@notes.Id">@notes.Description</a>
-            </dd>
-        }
-        @if (Model.BoneBookOnSystem != null)
-        {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BoneBookOnSystem)
-            </dt>
-            <dd class="col-sm-10">
-                <a asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@bone.Id">@bone.Description</a>
-            </dd>
-        }
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
 
-    </dl>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tomb_number)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Area_hill_burials)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Burial_depth)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.South_to_head)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.South_to_feet)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.West_to_head)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.West_to_feet)
+                </th>
+
+                <th>
+                    @if (Model.Length_of_remains != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Length_of_remains)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Sample_number != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Sample_number)
+
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Burial_icon1)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Burial_Icon2)
+                </th>
+
+                <th>
+                    @if (Model.Head_direction != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Head_direction)
+                    }
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Location)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Tomb_number)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Area_hill_burials)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Burial_depth)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.South_to_head)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.South_to_feet)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.West_to_head)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.West_to_feet)
+                </td>
+
+                <td>
+                    @if (Model.Length_of_remains != 0)
+                    {
+                        @Html.DisplayFor(model => model.Length_of_remains)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Sample_number != 0)
+                    {
+                        @Html.DisplayFor(model => model.Sample_number)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Burial_icon1)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Burial_Icon2)
+                </td>
+
+                <td>
+                    @if (Model.Head_direction != null)
+                    {
+                        @Html.DisplayFor(model => model.Head_direction)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--
+        The following Three tables are meant to display bone related features
+    -->
+    <h1>
+        Bone Related Features
+    </h1>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bone_taken)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Tooth_taken)
+                </th>
+
+                <th>
+                    @if (Model.Description_of_taken != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Description_of_taken)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Basilar_suture)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Ventral_arc)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Subpubic_angle)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Public_bone)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Preaur_sulcus)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Medial_IP_ramus)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Dorsal_pitting)
+                </th>
+
+                <th>
+                    @if (Model.Foreman_magnum != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Foreman_magnum)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.femur_head != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.femur_head)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.humerus_head != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.humerus_head)
+                    }
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Bone_taken)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Tooth_taken)
+                </td>
+
+                <td>
+                    @if (Model.Description_of_taken != null)
+                    {
+                        @Html.DisplayFor(model => model.Description_of_taken)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Basilar_suture)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Ventral_arc)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Subpubic_angle)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Public_bone)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Preaur_sulcus)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Medial_IP_ramus)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Dorsal_pitting)
+                </td>
+
+                <td>
+                    @if (Model.Foreman_magnum != 0)
+                    {
+                        @Html.DisplayFor(model => model.Foreman_magnum)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.femur_head != 0)
+                    {
+                        @Html.DisplayFor(model => model.femur_head)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.humerus_head != 0)
+                    {
+                        @Html.DisplayFor(model => model.humerus_head)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @if (Model.osteophytosis != null)
+                    {
+                        @Html.DisplayNameFor(model => model.osteophytosis)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.public_symphysis != null)
+                    {
+                        @Html.DisplayNameFor(model => model.public_symphysis)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Bone_length != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Bone_length)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Medial_clavicle != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Medial_clavicle)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Iliac_crest != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Iliac_crest)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Femur_diameter != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Femur_diameter)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Humerus != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Humerus)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Femur_length != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Femur_length)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Humerus_length != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Humerus_length)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Tibia_length != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Tibia_length)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Robust)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Superorbital)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @if (Model.osteophytosis != null)
+                    {
+                        @Html.DisplayFor(model => model.osteophytosis)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.public_symphysis != null)
+                    {
+                        @Html.DisplayFor(model => model.public_symphysis)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Bone_length != 0)
+                    {
+                        @Html.DisplayFor(model => model.Bone_length)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Medial_clavicle != 0)
+                    {
+                        @Html.DisplayFor(model => model.Medial_clavicle)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Iliac_crest != 0)
+                    {
+                        @Html.DisplayFor(model => model.Iliac_crest)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Femur_diameter != 0)
+                    {
+                        @Html.DisplayFor(model => model.Femur_diameter)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Humerus != 0)
+                    {
+                        @Html.DisplayFor(model => model.Humerus)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Femur_length != 0)
+                    {
+                        @Html.DisplayFor(model => model.Femur_length)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Humerus_length != 0)
+                    {
+                        @Html.DisplayFor(model => model.Humerus_length)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Tibia_length != 0)
+                    {
+                        @Html.DisplayFor(model => model.Tibia_length)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Robust)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Superorbital)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Orbit_edge)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Parietal_bossing)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Gonian)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Nuchal_crest)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Zygomatic_crest)
+                </th>
+
+                <th>
+                    @if (Model.Tooth_attrition != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Tooth_attrition)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Tooth_eruption != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Tooth_eruption)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Pathology_anomalies != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Pathology_anomalies)
+                    }
+                </th>
+
+                @if (Model.Epiphyseal_union != false)
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.Epiphyseal_union)
+                    </th>
+                }
+
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Orbit_edge)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Parietal_bossing)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Gonian)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Nuchal_crest)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Zygomatic_crest)
+                </td>
+
+                <td>
+                    @if (Model.Tooth_attrition != null)
+                    {
+                        @Html.DisplayFor(model => model.Tooth_attrition)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Tooth_eruption != null)
+                    {
+                        @Html.DisplayFor(model => model.Tooth_eruption)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Pathology_anomalies != null)
+                    {
+                        @Html.DisplayFor(model => model.Pathology_anomalies)
+                    }
+                </td>
+
+                @if (Model.Epiphyseal_union != false)
+                {
+                    <td>
+                        @Html.DisplayFor(model => model.Epiphyseal_union)
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!--
+        The following two tables are for Skull features
+    -->
+    <h1>
+        Skull Related Features
+    </h1>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @if (Model.Date_on_skull != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Date_on_skull)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Cranial_suture != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Cranial_suture)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Maxium_cranial_length)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Maximum_cranial_breadth)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Basion_bregma_height)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Basion_nasion)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Basion_prosthion_length)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Bizygomatic_diameter)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Nasion_prosthion)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Maximum_nasal_breadth)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Interorbital_breadth)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @if (Model.Date_on_skull != null)
+                    {
+                        @Html.DisplayFor(model => model.Date_on_skull)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Cranial_suture != null)
+                    {
+                        @Html.DisplayFor(model => model.Cranial_suture)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Maxium_cranial_length)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Maximum_cranial_breadth)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Basion_bregma_height)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Basion_nasion)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Basion_prosthion_length)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Bizygomatic_diameter)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Nasion_prosthion)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Maximum_nasal_breadth)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Interorbital_breadth)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @if (Model.Osteology_unknown_comment != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Osteology_unknown_comment)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Porotic_Hyperostosis)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Porotic_Hyperostosis_Locations)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Skull_at_Magazine)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Postcrania_at_magazine)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.To_be_Comfirmed)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Skull_Trauma)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Postcrania_trauma)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Cribra_Orbitala)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Metopic_suture)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Button_osteoma)
+                </th>
+
+                <th>
+                    @if (Model.Temporal_mandibular_joint_osteoarthritiis != false)
+                    {
+                        @Html.DisplayNameFor(model => model.Temporal_mandibular_joint_osteoarthritiis)
+                    }
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @if (Model.Osteology_unknown_comment != null)
+                    {
+                        @Html.DisplayFor(model => model.Osteology_unknown_comment)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Porotic_Hyperostosis)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Porotic_Hyperostosis_Locations)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Skull_at_Magazine)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Postcrania_at_magazine)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.To_be_Comfirmed)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Skull_Trauma)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Postcrania_trauma)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Cribra_Orbitala)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Metopic_suture)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Button_osteoma)
+                </td>
+
+                <td>
+                    @if (Model.Temporal_mandibular_joint_osteoarthritiis != false)
+                    {
+                        @Html.DisplayFor(model => model.Temporal_mandibular_joint_osteoarthritiis)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--
+        Date Related Features
+    -->
+    <h1>
+        General Dates
+    </h1>
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year_found)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Month_found)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Day_found)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Year_found)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Month_found)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Day_found)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--
+        Photos
+    -->
+    @if (Model.BoneBookOnSystem != null || Model.ImgOnSystem != null|| Model.NoteBookOnSystem != null)
+    {
+        <h1>
+            Photos
+        </h1>
+
+        <table class="table text-center textBack">
+            <thead>
+                <tr>
+                    @if (Model.ImgOnSystem != null)
+                    {
+                        <th class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ImgOnSystem)
+                        </th>
+                    }
+
+                    @if (Model.NoteBookOnSystem != null)
+                    {
+                        <th class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.NoteBookOnSystem)
+                        </th>
+                    }
+
+                    @if (Model.BoneBookOnSystem != null)
+                    {
+                        <th class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.BoneBookOnSystem)
+                        </th>
+                    }
+                </tr>
+            </thead>
+
+            <tbody class="table-striped table-bordered">
+                <tr>
+
+                    @if (Model.ImgOnSystem != null)
+                    {
+                        <td>
+                            <button class="buttonBack col-sm-10">
+                                <a class="buttonBack btn" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@img.Id">@img.Description</a>
+                            </button>
+                        </td>
+                    }
+
+                    @if (Model.NoteBookOnSystem != null)
+                    {
+                        <td>
+                            <button class="buttonBack col-sm-10">
+                                <a class="buttonBack btn" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@notes.Id">@notes.Description</a>
+                            </button>
+                        </td>
+                    }
+
+                    @if (Model.BoneBookOnSystem != null)
+                    {
+                        <td>
+                            <button class="buttonBack col-sm-10">
+                                <a class="buttonBack btn" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@bone.Id">@bone.Description</a>
+                            </button>
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    }
+
+
+    <!--
+        Other Features
+    -->
+    <h1>
+        Other Features
+    </h1>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hair_taken)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Soft_tissue)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Texile_taken)
+                </th>
+
+                <th>
+                    @if (Model.Artifact_found != false)
+                    {
+                        @Html.DisplayNameFor(model => model.Artifact_found)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Artifacts_description != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Artifacts_description)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Field_book != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Field_book)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Field_book_page_number != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Field_book_page_number)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Initials_of_data_entry_expert != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Initials_of_data_entry_expert)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Initials_of_data_entry_checker != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Initials_of_data_entry_checker)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.BYU_sample)
+                </th>
+
+                <th>
+                    @if (Model.Body_analysis != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Body_analysis)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Length_of_burial != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Length_of_burial)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Goods != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Goods)
+                    }
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Hair_taken)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Soft_tissue)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Texile_taken)
+                </td>
+
+                <td>
+                    @if (Model.Artifact_found != false)
+                    {
+                        @Html.DisplayFor(model => model.Artifact_found)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Artifacts_description != null)
+                    {
+                        @Html.DisplayFor(model => model.Artifacts_description)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Field_book != null)
+                    {
+                        @Html.DisplayFor(model => model.Field_book)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Field_book_page_number != null)
+                    {
+                        @Html.DisplayFor(model => model.Field_book_page_number)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Initials_of_data_entry_expert != null)
+                    {
+                        @Html.DisplayFor(model => model.Initials_of_data_entry_expert)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Initials_of_data_entry_checker != null)
+                    {
+                        @Html.DisplayFor(model => model.Initials_of_data_entry_checker)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.BYU_sample)
+                </td>
+
+                <td>
+                    @if (Model.Body_analysis != 0)
+                    {
+                        @Html.DisplayFor(model => model.Body_analysis)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Length_of_burial != 0)
+                    {
+                        @Html.DisplayFor(model => model.Length_of_burial)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Goods != null)
+                    {
+                        @Html.DisplayFor(model => model.Goods)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @if (Model.Face_Bundle != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Face_Bundle)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Burial_wrapping)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Age_bracket_at_death)
+                </th>
+
+                <th>
+                    @if (Model.Estimated_age_at_death != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Estimated_age_at_death)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Age_Method != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Age_Method)
+                        @Html.DisplayFor(model => model.Age_Method)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Estimate_living_stature != 0)
+                    {
+                        @Html.DisplayNameFor(model => model.Estimate_living_stature)
+                    }
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.GE_function)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Sex)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Sex_Method)
+                </th>
+
+                <th>
+                    @if (Model.Burial_situation != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Burial_situation)
+                    }
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @if (Model.Face_Bundle != null)
+                    {
+                        @Html.DisplayFor(model => model.Face_Bundle)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Burial_wrapping)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Age_bracket_at_death)
+                </td>
+
+                <td>
+                    @if (Model.Estimated_age_at_death != 0)
+                    {
+                        @Html.DisplayFor(model => model.Estimated_age_at_death)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Age_Method != null)
+                    {
+                        @Html.DisplayFor(model => model.Age_Method)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Estimate_living_stature != 0)
+                    {
+                        @Html.DisplayFor(model => model.Estimate_living_stature)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.GE_function)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Sex)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Sex_Method)
+                </td>
+
+                <td>
+                    @if (Model.Burial_situation != null)
+                    {
+                        @Html.DisplayFor(model => model.Burial_situation)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hair_color)
+                </th>
+
+                <th>
+                    @if (Model.Preservation != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Preservation)
+                    }
+                </th>
+
+                <th>
+                    @if (Model.Osteology_Notes != null)
+                    {
+                        @Html.DisplayNameFor(model => model.Osteology_Notes)
+                    }
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Hair_color)
+                </td>
+
+                <td>
+                    @if (Model.Preservation != null)
+                    {
+                        @Html.DisplayFor(model => model.Preservation)
+                    }
+                </td>
+
+                <td>
+                    @if (Model.Osteology_Notes != null)
+                    {
+                        @Html.DisplayFor(model => model.Osteology_Notes)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        @if (User.IsInRole("Researcher"))
+        {
+            <a asp-action="Edit" asp-controller="Home" asp-route-bid="@Model.BurialID" class="btn btn-sm buttonBack">Edit Burial</a>
+        }
+        <a asp-action="BiologicalSampleList" asp-controller="Home" asp-route-bid="@Model.BurialID" class="btn btn-sm buttonBack">View Samples for this Burial</a>
+        @if (User.IsInRole("Researcher"))
+        {
+            <a asp-action="BiologicalSampleCreate" asp-controller="Home" asp-route-bid="@Model.BurialID" class="btn btn-sm buttonBack">Add a Biological Sample</a>
+        }
+        <a asp-action="BurialList" class="btn btn-sm buttonBack">Back to Burial List</a>
+    </div>
 </div>
-<div>
-    @if (User.IsInRole("Researcher"))
-    {<a asp-action="Edit" asp-controller="Home" asp-route-bid="@Model.BurialID">Edit Burial</a><text> |</text>}
-    <a asp-action="BiologicalSampleList" asp-controller="Home" asp-route-bid="@Model.BurialID">View Samples for this Burial</a> |
-    @if (User.IsInRole("Researcher"))
-    {<a asp-action="BiologicalSampleCreate" asp-controller="Home" asp-route-bid="@Model.BurialID">Add a Biological Sample</a><text> |</text>}
-    <a asp-action="Index">Back to Burial List</a>
-</div>
+
