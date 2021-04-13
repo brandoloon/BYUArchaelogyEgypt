@@ -246,13 +246,13 @@
                                 <a class="btn btn-sm buttonBack" asp-action="Details" asp-route-bid="@item.BurialID">Details</a>
                                 @if (User.IsInRole("Researcher"))
                                 {
-                                    <a class="btn btn-sm buttonBack ml-1" asp-action="Edit" asp-route-id="@item.BurialID">
+                                    <a class="btn btn-sm buttonBack ml-1" asp-action="Edit" asp-route-bid="@item.BurialID">
                                         <i class="fas fa-pencil-alt">
 
                                         </i>
                                     </a>}
                                 @if (User.IsInRole("Admin"))
-                                {<a class="btn btn-sm buttonBackRed ml-2" asp-action="Delete" asp-route-id="@item.BurialID">
+                                {<a class="btn btn-sm buttonBackRed ml-2" asp-action="Delete" asp-route-bid="@item.BurialID">
                                         <i class="fas fa-trash-alt">
 
                                         </i>

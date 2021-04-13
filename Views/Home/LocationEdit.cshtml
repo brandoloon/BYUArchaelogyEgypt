@@ -13,8 +13,9 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="LocationEdit">
+        <form asp-action="LocationEdit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden asp-for="LocationId" value="@Model.LocationId" />
             <div class="form-group">
                 <label asp-for="BurialLocationNS" class="control-label"></label>
                 <input asp-for="BurialLocationNS" class="form-control" />

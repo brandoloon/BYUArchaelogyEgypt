@@ -33,7 +33,7 @@ namespace BYUArchaeologyEgypt.Controllers
         // BURIAL VIEWS
         public IActionResult BurialList(string id, int pageNum = 1, int lid = -1)
         {
-            int pageSize = 5;
+            int pageSize = 10;
             ViewData["locationList"] = _BurialContext.Locations.ToList();
             var filters = new Filters(id);
             ViewBag.Filters = filters;
@@ -147,12 +147,23 @@ namespace BYUArchaeologyEgypt.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int bid)
         {
-            Burial burial = _BurialContext.Burials.Find(id);
+            Burial burial = _BurialContext.Burials.Find(bid);
             _BurialContext.Remove(burial);
             _BurialContext.SaveChanges();
             return RedirectToAction("BurialList");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult BiologicalSampleDelete(int bsid)
+        {
+            BiologicalSample samp = _BurialContext.BiologicalSamples.Find(bsid);
+            int bid = samp.Burial;
+            _BurialContext.Remove(samp);
+            _BurialContext.SaveChanges();
+            Burial bob = _BurialContext.Burials.Find(bid);
+            return View("Success", bob);
         }
 
 
