@@ -887,27 +887,21 @@
                     @if (Model.ImgOnSystem != null)
                     {
                         <td>
-                            <button class="buttonBack col-sm-10">
-                                <a class="buttonBack btn" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@img.Id">@img.Description</a>
-                            </button>
+                                <a class="buttonBack btn col-sm-10" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@img.Id">@img.Description</a>
                         </td>
                     }
 
                     @if (Model.NoteBookOnSystem != null)
                     {
                         <td>
-                            <button class="buttonBack col-sm-10">
-                                <a class="buttonBack btn" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@notes.Id">@notes.Description</a>
-                            </button>
+                                <a class="buttonBack btn col-sm-10" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@notes.Id">@notes.Description</a>
                         </td>
                     }
 
                     @if (Model.BoneBookOnSystem != null)
                     {
                         <td>
-                            <button class="buttonBack col-sm-10">
-                                <a class="buttonBack btn" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@bone.Id">@bone.Description</a>
-                            </button>
+                                <a class="buttonBack btn col-sm-10" asp-action="DownloadFileFromFileSystem" asp-controller="Home" asp-route-id="@bone.Id">@bone.Description</a>
                         </td>
                     }
                 </tr>

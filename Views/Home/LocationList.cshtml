@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BYUArchaeologyEgypt.Models.Location>
+﻿@model BYUArchaeologyEgypt.Models.ViewModels.LocationListViewModel
 
 @{
     ViewData["Title"] = "LocationList";
@@ -16,33 +16,26 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.BurialLocationNS)
+                    Burial Location: North or South
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.LowPairNS)
+                    Burial Location: East or West
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.HighPairNS)
+                    Low Pair: North or South
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.BurialLocationEW)
+                    High Pair: North or South
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.LowPairEW)
+                    Low Pair: East or West
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.HighPairEW)
+                    High Pair: East or West
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.Subplot)
+                    Subplot
                 </th>
-
                 <th></th>
             </tr>
         </thead>
@@ -52,7 +45,7 @@
                 The following for each loop will populate the table with data 
              -->
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.Locations)
             {
             <tr>
                 <td>
