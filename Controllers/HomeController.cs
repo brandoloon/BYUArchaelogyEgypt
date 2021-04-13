@@ -1,4 +1,5 @@
 ﻿using BYUArchaeologyEgypt.Models;
+using BYUArchaeologyEgypt.Models.ViewModels;
 using BYUArchaeologyEgypt.Views.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -98,16 +99,12 @@ namespace BYUArchaeologyEgypt.Controllers
             //if (filters.HasLocationNS)
             //{
             //    List<string> NSvalues = new List<string>();
-
             //    //get NS value for each burial
             //    foreach (var item in _BurialContext.Locations)
             //    {
             //        NSvalues.Add(item.BurialLocationNS);
             //    }
-
-
             //    var queryable = NSvalues.AsQueryable();
-
             //    //compare to filter.LocationNS that the user input
             //    //query = query.Where(t => queryable.(t.Location) == filters.LocationNS);
             //    //query = query.Where(t => null != locs.Where(x => x.BurialLocationNS == filters.LocationNS && x.LocationId == t.Location).FirstOrDefault());
@@ -315,12 +312,35 @@ namespace BYUArchaeologyEgypt.Controllers
         }
         [HttpGet]
 
+
+
         // LOCATION VIEWS
         [HttpGet]
-        public IActionResult LocationList()
+        public IActionResult LocationList(int pageNum = 1)
         {
-            return View(_BurialContext.Locations);
+            int pageSize = 5;
+
+            return View
+                (new LocationListViewModel
+                    {
+                        Locations = (_BurialContext.Locations
+                        .OrderBy(x => x.LocationId)
+                        .Skip((pageNum - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList()),
+
+                        PageNumberingInfo = new PageNumberingInfo
+                        {
+                            NumItemsPerPage = pageSize,
+                            CurrentPage = pageNum,
+                            TotalNumItems = _BurialContext.Locations.Count()
+                        }
+                    }
+                );
         }
+
+
+
         [HttpGet]
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate()

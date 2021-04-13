@@ -18,8 +18,7 @@ namespace BYUArchaeologyEgypt.Models
             Sex = filters[3];
             BonesCollected = filters[4];
             HeadDirection = filters[5];
-            ArtifactDescription = filters[6];
-            YearFound = filters[7];
+            YearFound = filters[6];
             //LocationNS = filters[6];
             //LocationEW = filters[7];
             //LocationNSLowerValue = filters[8];
@@ -27,8 +26,10 @@ namespace BYUArchaeologyEgypt.Models
             //LocationEWLowerValue = filters[10];
             //LocationEWUpperValue = filters[11];
             //LocationSubplot = filters[12];
-            Length = filters[8];
-            Depth = filters[9];
+            Length = filters[7];
+            Depth = filters[8];
+            ArtifactDescription = filters[9];
+
         }
         public string FilterString { get; }
         public string HairColorId { get; }

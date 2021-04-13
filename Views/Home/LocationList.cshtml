@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BYUArchaeologyEgypt.Models.Location>
+﻿@model BYUArchaeologyEgypt.Models.ViewModels.LocationListViewModel
 
 @{
     ViewData["Title"] = "LocationList";
@@ -10,60 +10,67 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BurialLocationNS)
+                Burial Location: North or South
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialLocationEW)
+                Burial Location: East or West
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LowPairNS)
+                Low Pair: North or South
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HighPairNS)
+                High Pair: North or South
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LowPairEW)
+                Low Pair: East or West
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HighPairEW)
+                High Pair: East or West
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Subplot)
+                Subplot
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BurialLocationNS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BurialLocationEW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LowPairNS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HighPairNS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LowPairEW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HighPairEW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subplot)
-            </td>
-            <td>
-                <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a>
-                <a asp-action="BurialList" asp-route-lid="@item.LocationId">View Burials</a> | 
-                @if (User.IsInRole("Admin"))
-                {<text> | </text><a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Locations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BurialLocationNS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BurialLocationEW)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowPairNS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HighPairNS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowPairEW)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HighPairEW)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subplot)
+                </td>
+                <td>
+                    <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a>
+                    <a asp-action="BurialList" asp-route-lid="@item.LocationId">View Burials</a> |
+                    @if (User.IsInRole("Admin"))
+                    {<text> | </text><a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div page-location-info="@Model.PageNumberingInfo" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-dark"
+     class="btn-group pull-right m-1">
+</div>
