@@ -231,11 +231,11 @@
         <tbody class="table-striped table-bordered">
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.Bone_taken)
+                    @(Model.Bone_taken?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Tooth_taken)
+                    @(Model.Tooth_taken?"Yes":"No")
                 </td>
 
                 <td>
@@ -562,9 +562,9 @@
 
                 @if (Model.Epiphyseal_union != false)
                 {
-                    <td>
-                        @Html.DisplayFor(model => model.Epiphyseal_union)
-                    </td>
+            <td>
+                <text>Yes</text>
+            </td>
                 }
             </tr>
         </tbody>
@@ -757,7 +757,7 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Porotic_Hyperostosis)
+                    @(Model.Porotic_Hyperostosis?"Yes":"No")
                 </td>
 
                 <td>
@@ -765,41 +765,41 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Skull_at_Magazine)
+                    @(Model.Skull_at_Magazine?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Postcrania_at_magazine)
+                    @(Model.Postcrania_at_magazine?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.To_be_Comfirmed)
+                    @(Model.To_be_Comfirmed?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Skull_Trauma)
+                    @(Model.Skull_Trauma?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Postcrania_trauma)
+                    @(Model.Postcrania_trauma?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Cribra_Orbitala)
+                    @(Model.Cribra_Orbitala?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Metopic_suture)
+                    @(Model.Metopic_suture?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Button_osteoma)
+                    @(Model.Button_osteoma?"Yes":"No")
                 </td>
 
                 <td>
                     @if (Model.Temporal_mandibular_joint_osteoarthritiis != false)
                     {
-                        @Html.DisplayFor(model => model.Temporal_mandibular_joint_osteoarthritiis)
+                        <text>Yes</text>
                     }
                 </td>
             </tr>
@@ -1004,21 +1004,21 @@
         <tbody class="table-striped table-bordered">
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.Hair_taken)
+                    @(Model.Hair_taken?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Soft_tissue)
+                    @(Model.Soft_tissue?"Yes":"No")
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.Texile_taken)
+                    @(Model.Texile_taken?"Yes":"No")
                 </td>
 
                 <td>
                     @if (Model.Artifact_found != false)
                     {
-                        @Html.DisplayFor(model => model.Artifact_found)
+                        <text>Yes</text>
                     }
                 </td>
 
@@ -1058,7 +1058,7 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(model => model.BYU_sample)
+                    @(Model.BYU_sample?"Yes":"No")
                 </td>
 
                 <td>
