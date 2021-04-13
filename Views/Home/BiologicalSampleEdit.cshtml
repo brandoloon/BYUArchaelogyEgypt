@@ -11,8 +11,9 @@
 <hr />
 <div class="row textBack font-weight-bold centerYourSelf">
     <div class="col-md-4 align-items-center font-weight-bold">
-        <form asp-action="BiologicalSampleEdit">
+        <form asp-action="BiologicalSampleEdit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden asp-for="SampleId" value="@Model.SampleId" />
             <div class="form-group">
                 <label hidden asp-for="Burial" class="control-label"></label>
                 <input hidden asp-for="Burial" class="form-control" />
