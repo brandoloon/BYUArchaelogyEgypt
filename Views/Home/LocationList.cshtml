@@ -77,7 +77,7 @@
                 </td>
 
                 <td class="w-25">
-                    <a asp-action="BurialList" class="btn buttonBack ml-1 btn-sm mt-1">View Burials</a>
+                    <a asp-action="BurialList" asp-route-lid="@item.LocationId" class="btn buttonBack ml-1 btn-sm mt-1">View Burials</a>
                 </td>
             </tr>
             }
@@ -93,4 +93,3 @@
      class="btn-group pull-right m-1">
 </div>
 </div>
-3
