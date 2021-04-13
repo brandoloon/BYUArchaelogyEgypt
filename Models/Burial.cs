@@ -26,7 +26,7 @@ namespace BYUArchaeologyEgypt.Models
         [Key]
         public int BurialID { get; set; }
         [Required]
-        [DisplayName("Tomb Number")]
+        [DisplayName("Burial Number")]
         public int Tomb_number { get; set; }
         [ForeignKey("Location")]
         public int Location { get; set; }

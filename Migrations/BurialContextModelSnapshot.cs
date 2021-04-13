@@ -287,7 +287,6 @@ namespace BYUArchaeologyEgypt.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Goods")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hair_color")
