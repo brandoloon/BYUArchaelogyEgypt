@@ -107,7 +107,7 @@ document.getElementById("defaultOpen").click();
                         <span asp-validation-for="Head_direction" class="text-danger"></span>
                     </div>
 
-                    <a class="btn buttonBack" data-toggle="tab" href="#Bones">Continue</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Bones">Continue</a>
 
                 </div>
 
@@ -290,8 +290,8 @@ document.getElementById("defaultOpen").click();
                             <input class="form-check-input" asp-for="Epiphyseal_union" />Epiphyseal Union
                         </label>
                     </div>
-                    <a class="btn buttonBack" data-toggle="tab" href="#Location">Back</a>
-                    <a class="btn buttonBack" data-toggle="tab" href="#Skull">Continue</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Location">Back</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Skull">Continue</a>
                 </div>
 
 
@@ -609,13 +609,13 @@ document.getElementById("defaultOpen").click();
                         <input asp-for="Osteology_Notes" class="form-control" />
                         <span asp-validation-for="Osteology_Notes" class="text-danger"></span>
                     </div>
-                    <a class="btn buttonBack" data-toggle="tab" href="#Date">Back</a>
-                    <a class="btn buttonBack" data-toggle="tab" href="#Input">Continue</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Date">Back</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Input">Continue</a>
                 </div>
 
 
                 <!--START OF FILE INPUT SECTION-->
-                <div class="tab-pane fade" id="Input">
+                <div class="tab-pane fade" id="Input"> 
                     <h3>File Input</h3>
                     <div class="font-weight-bolder">
                         <p class="border-white border mt-1 mb-1">Add and photos or scans of burial information.</p>
@@ -638,8 +638,8 @@ document.getElementById("defaultOpen").click();
                         <input type="text" autocomplete="off" placeholder="Enter File Description" name="bone_description" />
                         <p>@ViewBag.status</p>
                     </div>
-                    <a class="btn buttonBack" data-toggle="tab" href="#Other">Back</a>
-                    <a class="btn buttonBack" data-toggle="tab" href="#Submit">Continue</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Other">Back</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Submit">Continue</a>
                 </div>
 
                 <!--START OF SUBMIT SECTION-->
@@ -649,7 +649,7 @@ document.getElementById("defaultOpen").click();
                         <p class="border-white border mt-1 mb-2">Once all desired information is input, click below to create a burial record.</p>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn buttonBack" />
+                        <input type="submit" value="Create" class="btn btn-sm buttonBack" />
                     </div>
                 </div>
 
