@@ -45,13 +45,13 @@ namespace BYUArchaeologyEgypt.Models
 
 
         //Location values to filter by
-        public string LocationNS { get; }
-        public string LocationEW { get; }
-        public string LocationNSLowerValue { get; }
-        public string LocationNSUpperValue { get; }
-        public string LocationEWLowerValue { get; }
-        public string LocationEWUpperValue { get; }
-        public string LocationSubplot { get; }
+        //public string LocationNS { get; }
+        //public string LocationEW { get; }
+        //public string LocationNSLowerValue { get; }
+        //public string LocationNSUpperValue { get; }
+        //public string LocationEWLowerValue { get; }
+        //public string LocationEWUpperValue { get; }
+        //public string LocationSubplot { get; }
 
 
 
@@ -72,13 +72,13 @@ namespace BYUArchaeologyEgypt.Models
 
 
         //Sees if location filters are in place
-        public bool HasLocationNS => LocationNS.ToLower() != "all";
-        public bool HasLocationEW => LocationEW.ToLower() != "all";
-        public bool HasLocationNSUpper => LocationNSUpperValue.ToLower() != "all";
-        public bool HasLocationEWUpper => LocationEWUpperValue.ToLower() != "all";
-        public bool HasLocationNSLower => LocationNSLowerValue.ToLower() != "all";
-        public bool HasLocationEWLower => LocationEWLowerValue.ToLower() != "all";
-        public bool HasLocationSubplot => LocationSubplot.ToLower() != "all";
+        //public bool HasLocationNS => LocationNS.ToLower() != "all";
+        //public bool HasLocationEW => LocationEW.ToLower() != "all";
+        //public bool HasLocationNSUpper => LocationNSUpperValue.ToLower() != "all";
+        //public bool HasLocationEWUpper => LocationEWUpperValue.ToLower() != "all";
+        //public bool HasLocationNSLower => LocationNSLowerValue.ToLower() != "all";
+        //public bool HasLocationEWLower => LocationEWLowerValue.ToLower() != "all";
+        //public bool HasLocationSubplot => LocationSubplot.ToLower() != "all";
 
     }
 }
