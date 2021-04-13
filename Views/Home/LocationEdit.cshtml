@@ -4,14 +4,18 @@
     ViewData["Title"] = "Location Input";
 }
 
+<!--
+    Currently we3 are sleeping on this page. This is an extra bit of functionaality so we will get here if we have time
+-->
 <h1>LocationEdit</h1>
 
 <h4>Location</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="LocationEdit">
+        <form asp-action="LocationEdit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden asp-for="LocationId" value="@Model.LocationId" />
             <div class="form-group">
                 <label asp-for="BurialLocationNS" class="control-label"></label>
                 <input asp-for="BurialLocationNS" class="form-control" />

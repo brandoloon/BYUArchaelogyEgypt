@@ -1,69 +1,95 @@
-﻿@model IEnumerable<BYUArchaeologyEgypt.Models.Location>
+﻿@model BYUArchaeologyEgypt.Models.ViewModels.LocationListViewModel
 
 @{
     ViewData["Title"] = "LocationList";
 }
 
-<h1>LocationList</h1>
+<h1>List of Locations</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BurialLocationNS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BurialLocationEW)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LowPairNS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HighPairNS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LowPairEW)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HighPairEW)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subplot)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BurialLocationNS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BurialLocationEW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LowPairNS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HighPairNS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LowPairEW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HighPairEW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subplot)
-            </td>
-            <td>
-                <a asp-action="LocationDetails" asp-route-lid="@item.LocationId">Details</a>
-                <a asp-action="BurialList">View Burials</a> | 
-                @if (User.IsInRole("Admin"))
-                {<text> | </text><a asp-action="LcoationDelete" asp-route-lid="@item.LocationId">Delete</a>}
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="font-weight-bold">
+    <table class="table textBack text-center">
+
+        <!--
+            The following is setting the names of the columns
+        -->
+
+        <thead>
+            <tr>
+                <th>
+                    Burial Location: North or South
+                </th>
+                <th>
+                    Burial Location: East or West
+                </th>
+                <th>
+                    Low Pair: North or South
+                </th>
+                <th>
+                    High Pair: North or South
+                </th>
+                <th>
+                    Low Pair: East or West
+                </th>
+                <th>
+                    High Pair: East or West
+                </th>
+                <th>
+                    Subplot
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-bordered">
+
+            <!--
+                The following for each loop will populate the table with data 
+             -->
+
+            @foreach (var item in Model.Locations)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BurialLocationNS)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowPairNS)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.HighPairNS)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.BurialLocationEW)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowPairEW)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.HighPairEW)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subplot)
+                </td>
+
+                <td class="w-25">
+                    <a asp-action="BurialList" asp-route-lid="@item.LocationId" class="btn buttonBack ml-1 btn-sm mt-1">View Burials</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <!--
+        The following div is for pagination
+    -->
+
+    <div page-location-info="@Model.PageNumberingInfo" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-dark"
+     class="btn-group pull-right m-1">
+</div>
+</div>

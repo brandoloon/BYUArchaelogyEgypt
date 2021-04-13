@@ -1,16 +1,16 @@
 ﻿using BYUArchaeologyEgypt.Models;
+using BYUArchaeologyEgypt.Models.ViewModels;
+using BYUArchaeologyEgypt.Views.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using BYUArchaeologyEgypt.Views.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace BYUArchaeologyEgypt.Controllers
 {
@@ -31,9 +31,9 @@ namespace BYUArchaeologyEgypt.Controllers
         }
 
         // BURIAL VIEWS
-        public IActionResult BurialList(string id, int pageNum = 1)
+        public IActionResult BurialList(string id, int pageNum = 1, int lid = -1)
         {
-            int pageSize = 5;
+            int pageSize = 10;
             ViewData["locationList"] = _BurialContext.Locations.ToList();
             var filters = new Filters(id);
             ViewBag.Filters = filters;
@@ -49,6 +49,8 @@ namespace BYUArchaeologyEgypt.Controllers
             ViewBag.LocationEWLower = _BurialContext.Locations.Select(x => x.LowPairEW).Distinct().ToList();
             ViewBag.LocationEWUpper = _BurialContext.Locations.Select(x => x.HighPairEW).Distinct().ToList();
             ViewBag.LocationSubplot = new List<string> { "NE", "NW", "SE", "SW" };
+            ViewBag.HeadDirection = new List<string> { "N", "S", "E", "W" };
+
 
 
             IQueryable<Burial> query = _BurialContext.Burials;
@@ -71,28 +73,47 @@ namespace BYUArchaeologyEgypt.Controllers
             }
             if (filters.HasBonesCollected)
             {
-                query = query.Where(t => t.Bone_taken == ("true" == filters.BonesCollected) );
+                query = query.Where(t => t.Bone_taken == ("true" == filters.BonesCollected));
             }
             if (filters.HasYearFound)
             {
                 query = query.Where(t => t.Year_found.ToString() == filters.YearFound);
             }
-
-            ////Location Filters
+            if (filters.HasLength)
+            {
+                query = query.Where(t => t.Length_of_remains.ToString() == filters.Length);
+            }
+            if (filters.HasDepth)
+            {
+                query = query.Where(t => t.Burial_depth.ToString() == filters.Depth);
+            }
+            if (filters.HasHeadDirection)
+            {
+                query = query.Where(t => t.Head_direction == filters.HeadDirection);
+            }
+            if (filters.HasArtifactDescription)
+            {
+                query = query.Where(t => t.Artifacts_description.Contains(filters.ArtifactDescription));
+            }
+            //Location Filters
             //if (filters.HasLocationNS)
             //{
             //    List<string> NSvalues = new List<string>();
-
             //    //get NS value for each burial
-            //    foreach (var item in ViewData["locationList"] as IEnumerable<Location>)
+            //    foreach (var item in _BurialContext.Locations)
             //    {
             //        NSvalues.Add(item.BurialLocationNS);
             //    }
-
+            //    var queryable = NSvalues.AsQueryable();
             //    //compare to filter.LocationNS that the user input
-            //    query = query.Where(t => NSvalues[t.Location] == filters.LocationNS);
+            //    //query = query.Where(t => queryable.(t.Location) == filters.LocationNS);
+            //    //query = query.Where(t => null != locs.Where(x => x.BurialLocationNS == filters.LocationNS && x.LocationId == t.Location).FirstOrDefault());
             //}
 
+            if (lid != -1)
+            {
+                query = query.Where(d => d.Location == lid);
+            }
 
 
             var tasks = query.ToList();
@@ -123,14 +144,25 @@ namespace BYUArchaeologyEgypt.Controllers
             string id = string.Join('-', filter);
             return RedirectToAction("BurialList", new { ID = id });
         }
-                
+
         [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int bid)
         {
-            Burial burial = _BurialContext.Burials.Find(id);
+            Burial burial = _BurialContext.Burials.Find(bid);
             _BurialContext.Remove(burial);
             _BurialContext.SaveChanges();
             return RedirectToAction("BurialList");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult BiologicalSampleDelete(int bsid)
+        {
+            BiologicalSample samp = _BurialContext.BiologicalSamples.Find(bsid);
+            int bid = samp.Burial;
+            _BurialContext.Remove(samp);
+            _BurialContext.SaveChanges();
+            Burial bob = _BurialContext.Burials.Find(bid);
+            return View("Success", bob);
         }
 
 
@@ -143,7 +175,7 @@ namespace BYUArchaeologyEgypt.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Researcher")]
-        public async Task<IActionResult> CreateAsync(Burial burial, 
+        public async Task<IActionResult> CreateAsync(Burial burial,
             IFormFile img_file, string img_description,
             IFormFile notes_file, string notes_description,
             IFormFile bone_file, string bone_description)
@@ -152,7 +184,7 @@ namespace BYUArchaeologyEgypt.Controllers
             // Image Upload
             if (img_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\img\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\img\\" + burial.BurialID +"\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(img_file.FileName);
@@ -186,7 +218,7 @@ namespace BYUArchaeologyEgypt.Controllers
             // Field Notes Upload
             if (notes_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\notes\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\notes\\" + burial.BurialID + "\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(notes_file.FileName);
@@ -218,9 +250,9 @@ namespace BYUArchaeologyEgypt.Controllers
                 }
             }
             // Bone Book Upload
-            if (img_file != null)
+            if (bone_file != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\bonebooks\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\wwwroot\\Files\\bonebooks\\" + burial.BurialID + "\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(bone_file.FileName);
@@ -290,12 +322,35 @@ namespace BYUArchaeologyEgypt.Controllers
         }
         [HttpGet]
 
+
+
         // LOCATION VIEWS
         [HttpGet]
-        public IActionResult LocationList()
+        public IActionResult LocationList(int pageNum = 1)
         {
-            return View(_BurialContext.Locations);
+            int pageSize = 5;
+
+            return View
+                (new LocationListViewModel
+                    {
+                        Locations = (_BurialContext.Locations
+                        .OrderBy(x => x.LocationId)
+                        .Skip((pageNum - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList()),
+
+                        PageNumberingInfo = new PageNumberingInfo
+                        {
+                            NumItemsPerPage = pageSize,
+                            CurrentPage = pageNum,
+                            TotalNumItems = _BurialContext.Locations.Count()
+                        }
+                    }
+                );
         }
+
+
+
         [HttpGet]
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationCreate()
@@ -313,7 +368,7 @@ namespace BYUArchaeologyEgypt.Controllers
                 l.HighPairEW == location.HighPairEW &&
                 l.LowPairEW == location.LowPairEW &&
                 l.BurialLocationEW == location.BurialLocationEW &&
-                l.Subplot == location.Subplot).FirstOrDefault();
+                l.Subplot == location.Subplot).First();
             if (findLocation == null)
             {
                 _BurialContext.Locations.Add(location);
@@ -334,10 +389,23 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationEdit(Location location)
         {
-            _BurialContext.Locations.Add(location);
+            _BurialContext.Locations.Update(location);
             _BurialContext.SaveChanges();
             ViewData["location"] = location;
             return View("BurialList");
+        }
+
+        public IActionResult DownloadFileFromFileSystem(int id)
+        {
+            var file = _BurialContext.FileOnFileSystemModels.Where(x => x.Id == id).FirstOrDefault();
+            if (file == null) return null;
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(file.FilePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            return File(memory, file.FileType, file.Name + file.Extension);
         }
 
         // BIOLOGICAL SAMPLE VIEWS
@@ -377,7 +445,7 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleEdit(BiologicalSample biologicalSample)
         {
-            _BurialContext.BiologicalSamples.Add(biologicalSample);
+            _BurialContext.BiologicalSamples.Update(biologicalSample);
             _BurialContext.SaveChanges();
             return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
         }

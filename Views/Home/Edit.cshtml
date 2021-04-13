@@ -6,11 +6,11 @@
     var location = (Location)ViewData["location"];
 }
 
-<div class="container">
-    <h1>Add Burial Information</h1>
+<div>
+    <h1>Edit Burial Information</h1>
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item"><a id="defaultOpen" class="active nav-link" data-toggle="tab" href="#Location">Location</a></li>
+    <ul class="centerYourSelf nav nav-tabs font-weight-bold">
+        <li class="nav-item active"><a id="defaultOpen" class="nav-link" data-toggle="tab" href="#Location">Location</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Bones" id="defaultOpen">Bones</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Skull">Skull</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Date">Date</a></li>
@@ -26,17 +26,18 @@
 document.getElementById("defaultOpen").click();
 </script>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
+<div class="row textBack font-weight-bold centerYourSelf">
+    <div class="col-md-4 align-items-center font-weight-bold">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
 
             <!--START OF LOCATION SECTION-->
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="Location">
+                <div class="tab-pane active" id="Location">
                     <h3>Burial Location Information</h3>
                     <br />
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="BurialID" hidden value="@Model.BurialID" />
                     <div class="form-group">
                         <label asp-for="Tomb_number" class="control-label">Tomb Number</label>
                         <input asp-for="Tomb_number" class="form-control" />
@@ -103,7 +104,7 @@ document.getElementById("defaultOpen").click();
                         <span asp-validation-for="Head_direction" class="text-danger"></span>
                     </div>
 
-                    <a class="btn btn-primary" data-toggle="tab" href="#Bones">Continue</a>
+                    <a class="btn btn-sm buttonBack" data-toggle="tab" href="#Bones">Continue</a>
 
                 </div>
 
@@ -286,8 +287,8 @@ document.getElementById("defaultOpen").click();
                             <input class="form-check-input" asp-for="Epiphyseal_union" />Epiphyseal Union
                         </label>
                     </div>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Location">Back</a>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Skull">Continue</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Location">Back</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Skull">Continue</a>
                 </div>
 
 
@@ -411,8 +412,8 @@ document.getElementById("defaultOpen").click();
                             <input class="form-check-input" asp-for="Temporal_mandibular_joint_osteoarthritiis" />Temporal Mandibular Joint Osteoarthritis
                         </label>
                     </div>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Bones">Back</a>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Date">Continue</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Bones">Back</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Date">Continue</a>
 
                 </div>
 
@@ -438,8 +439,8 @@ document.getElementById("defaultOpen").click();
                         <input asp-for="Day_found" class="form-control" />
                         <span asp-validation-for="Day_found" class="text-danger"></span>
                     </div>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Skull">Back</a>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Other">Continue</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Skull">Back</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Other">Continue</a>
                 </div>
 
 
@@ -605,8 +606,8 @@ document.getElementById("defaultOpen").click();
                         <input asp-for="Osteology_Notes" class="form-control" />
                         <span asp-validation-for="Osteology_Notes" class="text-danger"></span>
                     </div>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Date">Back</a>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Input">Continue</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Date">Back</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Input">Continue</a>
                 </div>
 
 
@@ -614,7 +615,7 @@ document.getElementById("defaultOpen").click();
                 <div class="tab-pane fade" id="Input">
                     <h3>File Input</h3>
                     <div class="font-weight-bolder">
-                        <p>Add and photos or scans of burial information.</p>
+                        <p class="border-white border mt-1 mb-1">Add and photos or scans of burial information.</p>
                     </div>
                     <div class="form-group">
                         <label>Upload Image:</label>
@@ -634,18 +635,18 @@ document.getElementById("defaultOpen").click();
                         <input type="text" autocomplete="off" placeholder="Enter File Description" name="bone_description" />
                         <p>@ViewBag.status</p>
                     </div>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Other">Back</a>
-                    <a class="btn btn-primary" data-toggle="tab" href="#Submit">Continue</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Other">Back</a>
+                    <a class="btn btn-sm buttonBack"  data-toggle="tab" href="#Submit">Continue</a>
                 </div>
 
                 <!--START OF SUBMIT SECTION-->
                 <div class="tab-pane fade" id="Submit">
                     <h3>Submit Burial Form</h3>
                     <div class="font-weight-bolder">
-                        <p>Once all desired information is input, click below to create a burial record.</p>
+                        <p class="border-white border mt-1 mb-1">Once all desired information is input, click below to create a burial record.</p>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Submit Edit" class="btn btn-sm buttonBack"  />
                     </div>
                 </div>
 

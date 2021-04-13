@@ -26,7 +26,7 @@ namespace BYUArchaeologyEgypt.Models
         [Key]
         public int BurialID { get; set; }
         [Required]
-        [DisplayName("Tomb Number")]
+        [DisplayName("Burial Number")]
         public int Tomb_number { get; set; }
         [ForeignKey("Location")]
         public int Location { get; set; }
@@ -54,7 +54,8 @@ namespace BYUArchaeologyEgypt.Models
         [DisplayName("Length of Remains")]
         public int Length_of_remains { get; set; }
         [DisplayName("Sample Number")]
-        public int Sample_number { get; set; }        [Required]
+        public int Sample_number { get; set; }        
+        [Required]
         public bool Artifact_found { get; set; }
         [DisplayName("Artifact's Description")]
         public string Artifacts_description { get; set; }

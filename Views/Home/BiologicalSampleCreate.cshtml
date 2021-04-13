@@ -5,16 +5,16 @@
     var burial = (Burial)ViewData["burial"];
 }
 
-<h1>BiologicalSampleCreate</h1>
+<h1>Biological Sample</h1>
 
-<h4>BiologicalSample</h4>
+<h4>Please enter all the information requested bellow</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center textBack font-weight-bold">
     <div class="col-md-4">
         <form asp-action="BiologicalSampleCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Burial" class="control-label"></label>
+                <label hidden asp-for="Burial" class="control-label"></label>
                 <input hidden asp-for="Burial" value="@burial.BurialID" class="form-control" />
                 <span asp-validation-for="Burial" class="text-danger"></span>
             </div>
@@ -118,15 +118,12 @@
                 <input asp-for="Category" class="form-control" />
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group text-center">
+                <a asp-action="BurialList" class="btn btn-sm buttonBack">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-sm buttonBack" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

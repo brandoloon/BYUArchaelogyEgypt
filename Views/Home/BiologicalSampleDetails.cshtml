@@ -6,140 +6,176 @@
 
 <h1>BiologicalSampleDetails</h1>
 
-<div>
-    <h4>BiologicalSample</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Burial)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Burial)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RackNum)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RackNum)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BagNum)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BagNum)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ClusterNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ClusterNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateFound)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateFound)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PreviouslySampled)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PreviouslySampled)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Initials)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Initials)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Area)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Area)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foci)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foci)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.C14_2017)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.C14_2017)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Questions)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Questions)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConventionalC14Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConventionalC14Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.C14CalendarDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.C14CalendarDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CalendarDateMAX)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CalendarDateMAX)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CalendarDateMIN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CalendarDateMIN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CalendarDateSPAN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CalendarDateSPAN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CalendarDateAVG)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CalendarDateAVG)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-    </dl>
+<div class="font-weight-bold">
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Burial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RackNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BagNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClusterNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateFound)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PreviouslySampled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initials)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Area)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table-striped table-bordered">
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Burial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.RackNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.BagNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ClusterNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DateFound)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.PreviouslySampled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Initials)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Area)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Size)
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+    <table class="table text-center textBack">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Foci)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.C14_2017)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Questions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConventionalC14Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.C14CalendarDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CalendarDateMAX)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CalendarDateMIN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CalendarDateSPAN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CalendarDateAVG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-bordered">
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Foci)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.C14_2017)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Location)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Questions)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.ConventionalC14Age)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.C14CalendarDate)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.CalendarDateMAX)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.CalendarDateMIN)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.CalendarDateSPAN)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.CalendarDateAVG)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Category)
+                    </td>
+                </tr>
+        </tbody>
+    </table>
 </div>
-<div>
+<div class="text-center">
     @if (User.IsInRole("Researcher"))
-    {<a asp-action="BiologicalSampleEdit" asp-route-bsid="@Model.SampleId">Edit</a> <text> | </text>}
-    <a asp-action="Index">Back to List</a>
+    {
+        <a asp-action="BiologicalSampleEdit" asp-route-bsid="@Model.SampleId" class="btn btn-sm buttonBack">
+            <i class="fas fa-pencil-alt">
+
+            </i>
+        </a>
+    }
+    <a asp-action="BiologicalSampleList" asp-route-bid="@Model.Burial" class="btn btn-sm buttonBack">
+        Back to List
+    </a>
 </div>
