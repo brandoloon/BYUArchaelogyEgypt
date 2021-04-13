@@ -42,15 +42,14 @@ namespace BYUArchaeologyEgypt.Controllers
             ViewBag.AgeBracketAtDeath = _BurialContext.Burials.Select(x => x.Age_bracket_at_death).Distinct().ToList();
             ViewBag.Sex = _BurialContext.Burials.Select(x => x.Sex).Distinct().ToList();
             ViewBag.BonesCollected = new List<string> { "True", "False" };
+            ViewBag.LocationNS = new List<string> { "N", "S" };
+            ViewBag.LocationEW = new List<string> { "E", "W" };
+            ViewBag.LocationNSLower = _BurialContext.Locations.Select(x => x.LowPairNS).Distinct().ToList();
+            ViewBag.LocationNSUpper = _BurialContext.Locations.Select(x => x.HighPairNS).Distinct().ToList();
+            ViewBag.LocationEWLower = _BurialContext.Locations.Select(x => x.LowPairEW).Distinct().ToList();
+            ViewBag.LocationEWUpper = _BurialContext.Locations.Select(x => x.HighPairEW).Distinct().ToList();
+            ViewBag.LocationSubplot = new List<string> { "NE", "NW", "SE", "SW" };
             ViewBag.HeadDirection = new List<string> { "N", "S", "E", "W" };
-            //ViewBag.LocationNS = new List<string> { "N", "S" };
-            //ViewBag.LocationEW = new List<string> { "E", "W" };
-            //ViewBag.LocationNSLower = _BurialContext.Locations.Select(x => x.LowPairNS).Distinct().ToList();
-            //ViewBag.LocationNSUpper = _BurialContext.Locations.Select(x => x.HighPairNS).Distinct().ToList();
-            //ViewBag.LocationEWLower = _BurialContext.Locations.Select(x => x.LowPairEW).Distinct().ToList();
-            //ViewBag.LocationEWUpper = _BurialContext.Locations.Select(x => x.HighPairEW).Distinct().ToList();
-            //ViewBag.LocationSubplot = new List<string> { "NE", "NW", "SE", "SW" };
-
 
 
 
@@ -380,7 +379,7 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult LocationEdit(Location location)
         {
-            _BurialContext.Locations.Add(location);
+            _BurialContext.Locations.Update(location);
             _BurialContext.SaveChanges();
             ViewData["location"] = location;
             return View("BurialList");
@@ -436,7 +435,7 @@ namespace BYUArchaeologyEgypt.Controllers
         [Authorize(Roles = "Researcher")]
         public IActionResult BiologicalSampleEdit(BiologicalSample biologicalSample)
         {
-            _BurialContext.BiologicalSamples.Add(biologicalSample);
+            _BurialContext.BiologicalSamples.Update(biologicalSample);
             _BurialContext.SaveChanges();
             return View("Success", _BurialContext.Burials.Where(b => b.BurialID == biologicalSample.Burial).FirstOrDefault());
         }
