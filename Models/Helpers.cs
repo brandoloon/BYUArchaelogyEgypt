@@ -12,7 +12,7 @@ namespace BYUArchaeologyEgypt.Models
 	{
 		public static string GetRDSConnectionString()
 		{
-			return "Data Source=aa1ckyqrn1p3p3s.cmtvlmyxbvpy.us-east-1.rds.amazonaws.com;Initial Catalog=burialdb;User ID=admin;Password=intex123;";
+			return "Data Source=aavt7nai4cd0ic.cmtvlmyxbvpy.us-east-1.rds.amazonaws.com;Initial Catalog=burialdb;User ID=admin;Password=intex123;";
 		}
 	}
 }
